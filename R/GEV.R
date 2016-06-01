@@ -50,7 +50,7 @@ gev_Lmom <- function(dat) {
     dat.Lmom <- nsRFA::Lmoments(dat)
 
 
-    fail_safe <- dplyr::failwith(NULL, nsRFA::par.GEV)
+    fail_safe <- plyr::failwith(NULL, nsRFA::par.GEV)
     fitted.param <- fail_safe(dat.Lmom[1], dat.Lmom[2], dat.Lmom[4])
 
     if (is.null(fitted.param) == TRUE) {
@@ -95,7 +95,7 @@ gev_mom <- function(dat) {
     }
   }
   # xi <- newtonRaphson(kfunc, -0.1, tol = 0.0001)$root  # FKB: initial code
-  fail_safe <- dplyr::failwith(NULL, pracma::newtonRaphson)  # START FKB HACK
+  fail_safe <- plyr::failwith(NULL, pracma::newtonRaphson)  # START FKB HACK
   xi <- fail_safe(kfunc, -0.1, tol = 0.0001)
   xi <- xi$root
 
@@ -149,7 +149,7 @@ gev_bayes <- function(dat) {
       dnorm(x[3], 0, 0.2)
     }
 
-    fail_safe <- dplyr::failwith(NULL, nsRFA::BayesianMCMC)
+    fail_safe <- plyr::failwith(NULL, nsRFA::BayesianMCMC)
     bayes <- fail_safe(dat, nbpas = 5000, nbchaines = 3, confint = c(0.05, 0.95), dist = "GEV", apriori = myprior)
 
     if (is.null(bayes) == TRUE) {

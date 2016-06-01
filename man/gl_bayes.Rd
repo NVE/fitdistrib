@@ -17,6 +17,6 @@ Function to fit the Generalized Logistics distribution with BayesianMCMC method
 We assume that the shape parameter only has a prior with mean zero and standard deviation 0.2 (dnorm(x[3], 0, 0.2))
 }
 \examples{
-gl_bayes(XXX)
+gl_bayes(nsRFA::rand.genlogis(1000, 0, 1, 1))
 }
 

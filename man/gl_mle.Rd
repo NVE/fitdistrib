@@ -2,7 +2,7 @@
 % Please edit documentation in R/GL.R
 \name{gl_mle}
 \alias{gl_mle}
-\title{Fitting the GEV distribution with MLE}
+\title{Fitting the GL distribution with MLE}
 \usage{
 gl_mle(xdat, ydat = NULL, mul = NULL, sigl = NULL, shl = NULL,
   mulink = identity, siglink = identity, shlink = identity,
@@ -17,10 +17,10 @@ param Estimated parameters and standard error returned as a list($estimate, $se)
 Standard error is not yet implemented
 }
 \description{
-Function to fit the GEV distribution with the maximum likelihood method.
+Function to fit the GL distribution with the maximum likelihood method.
 This function was copied from Kolbjorn's initial file
 }
 \examples{
-gl_mle(XXX))
+gl_mle(nsRFA::rand.genlogis(1000, 0, 1, 1))
 }
 

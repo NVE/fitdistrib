@@ -6,20 +6,21 @@
 #' @description Function to fit the Gumbel distribution with the maximum likelihood method
 #' @param dat the data that needs fitting (i.e. flood data)
 #' @return param Estimated parameters (2) and standard error returned as a list($estimate, $se)
+#' @importFrom ismev gum.fit
 #' @export
 #'
-#' @examples gumbel_mle(XXX)
+#' @examples gumbel_mle(evd::rgumbel(1000, loc=0, scale=1))
 gumbel_mle <- function(dat) {
-  
-  param <- list(estimate = c(NA, NA), se = c(NA, NA)) 
+
+  param <- list(estimate = c(NA, NA), se = c(NA, NA))
   if (length(dat) >= GLOBAL_min_years_data) {
     param <- gum.fit(dat, show = FALSE)
     param$estimate <- param$mle
     invisible(param)
 
   } else {
-    print(paste("Warning: this station has less than ", GLOBAL_min_years_data," years of data. Use another method!", 
-                  collapse = "", sep = ""))   
+    print(paste("Warning: this station has less than ", GLOBAL_min_years_data," years of data. Use another method!",
+                  collapse = "", sep = ""))
     invisible(param)
     }
 }
@@ -29,19 +30,21 @@ gumbel_mle <- function(dat) {
 #' @description Function to fit the Gumbel distribution with the linear moment method
 #' @param dat the data that needs fitting (i.e. flood data)
 #' @return param Estimated parameters (2) and standard error returned as a list($estimate, $se)
+#' @importFrom nsRFA Lmoments
+#' @importFrom nsRFA par.gumb
 #' @export
 #'
-#' @examples gumbel_Lmom(XXX))
+#' @examples gumbel_Lmom(evd::rgumbel(1000, loc=0, scale=1))
 gumbel_Lmom <- function(dat) {
 
-  param <- list(estimate = c(NA, NA), se = c(NA, NA)) 
+  param <- list(estimate = c(NA, NA), se = c(NA, NA))
   if (length(dat) >= GLOBAL_min_years_data) {
     dat.mom <- Lmoments(dat)
     param$estimate <- invisible(as.numeric(par.gumb(dat.mom[1],dat.mom[2]))) # Standard error not yet implemented
     invisible(param)
   } else {
-    print(paste("Warning: this station has less than ",GLOBAL_min_years_data," years of data. Use another method!", 
-                  collapse="",sep=""))    
+    print(paste("Warning: this station has less than ",GLOBAL_min_years_data," years of data. Use another method!",
+                  collapse="",sep=""))
     invisible(param)
   }
 }
@@ -50,12 +53,13 @@ gumbel_Lmom <- function(dat) {
 #' @description Function to fit the Gumbel distribution with the ordinary moments method
 #' @param dat the data that needs fitting (i.e. flood data)
 #' @return param Estimated parameters (2) and standard error returned as a list($estimate, $se)
+#' @importFrom nsRFA moments
 #' @export
 #'
-#' @examples gumbel_mom(XXX))
+#' @examples gumbel_mom(evd::rgumbel(1000, loc=0, scale=1))
 gumbel_mom <- function(dat) {
 
-  param <- list(estimate = c(NA, NA), se = c(NA, NA)) 
+  param <- list(estimate = c(NA, NA), se = c(NA, NA))
   if (length(dat) >= GLOBAL_min_years_data) {
     sigma <- moments(dat)[2]
     mu <-  moments(dat)[1]
@@ -64,8 +68,8 @@ gumbel_mom <- function(dat) {
     # Standard error is not yet implemented
     invisible(param)
   } else {
-    print(paste("Warning: this station has less than ", GLOBAL_min_years_data," years of data. Use another method!", 
-                  collapse="",sep=""))  
+    print(paste("Warning: this station has less than ", GLOBAL_min_years_data," years of data. Use another method!",
+                  collapse="",sep=""))
     invisible(param)
   }
 }
@@ -75,25 +79,26 @@ gumbel_mom <- function(dat) {
 #' We do not provide a prior for the BayesianMCMC function
 #' @param dat the data that needs fitting (i.e. flood data)
 #' @return param Estimated parameters and standard error returned as a list($estimate, $se)
+#' @importFrom nsRFA BayesianMCMC
 #' @export
 #'
-#' @examples gumbel_bayes(XXX)
+#' @examples gumbel_bayes(evd::rgumbel(1000, loc=0, scale=1))
 gumbel_bayes <- function(dat) {
 
-  param <- list(estimate = c(NA, NA), se = c(NA, NA)) 
-  
+  param <- list(estimate = c(NA, NA), se = c(NA, NA))
+
   if (length(dat) >= GLOBAL_min_years_data) {
 
     # Should we do gumbel with a prior? I tried, it didn't work
     fail_safe <- failwith(NULL, BayesianMCMC)
-    bayes <- fail_safe(dat, nbpas = 5000, nbchaines = 3, 
+    bayes <- fail_safe(dat, nbpas = 5000, nbchaines = 3,
                        confint = c(0.05, 0.95), dist = "GUMBEL")
-    
+
     if (is.null(bayes) == TRUE) {
       print("Warning: the function BayesianMCMC failed in gumbel_bayes")
       invisible(param)
     } else {
-      
+
       ## Addition to return parameters
       #   # Solution 1
       param$estimate <- bayes$parametersML
@@ -108,9 +113,9 @@ gumbel_bayes <- function(dat) {
       invisible(param)
     }
   } else {
-    print(paste("Warning: this station has less than ", GLOBAL_min_years_data," years of data. Use another method!", 
-                collapse = "", sep = ""))  
-    invisible(param)  
+    print(paste("Warning: this station has less than ", GLOBAL_min_years_data," years of data. Use another method!",
+                collapse = "", sep = ""))
+    invisible(param)
   }
 }
 
@@ -118,6 +123,7 @@ gumbel_bayes <- function(dat) {
 #' @description Function to calculate the posterior predictive distribution after calling gumbel_bayes
 #' @param (mmrp, mupars, spars) parameters returned by gumbel_bayes. mupars, spars are the ensemble of param$estimate
 #' @return param Estimated parameters and standard error returned as a list($estimate, $se)
+#' @importFrom nsRFA invF.gumb
 #' @export
 #'
 #' @examples Needs example

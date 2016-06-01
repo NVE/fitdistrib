@@ -16,6 +16,6 @@ param Estimated parameters (2) and standard error returned as a list($estimate, 
 Function to fit the Gumbel distribution with the ordinary moments method
 }
 \examples{
-gumbel_mom(XXX))
+gumbel_mom(evd::rgumbel(1000, loc=0, scale=1))
 }
 

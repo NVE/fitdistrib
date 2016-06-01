@@ -6,6 +6,7 @@
 #' @description Function to fit the GEV distribution with the maximum likelihood method
 #' @param dat the data that needs fitting (i.e. flood data)
 #' @return param Estimated parameters and standard error returned as a list($estimate, $se)
+#' @importFrom evd fgev
 #' @export
 #'
 #' @examples gev_mle(evd::rgev(10000, loc=0, scale=1, shape=0))
@@ -15,7 +16,7 @@ gev_mle <- function(dat) {
   if (length(dat) >= GLOBAL_min_years_data) {
 
 
-    fail_safe <- plyr::failwith(NULL, evd::fgev)
+    fail_safe <- failwith(NULL, fgev)
     fitted.param <- fail_safe(dat)
 
     if (is.null(fitted.param) == TRUE) {
@@ -39,6 +40,7 @@ gev_mle <- function(dat) {
 #' @param dat the data that needs fitting (i.e. flood data)
 #' @return param Estimated parameters and standard error returned as a list($estimate, $se).
 #' Standard error is not yet implemented
+#' @importFrom nsRFA par.GEV
 #' @export
 #'
 #' @examples gev_Lmom(evd::rgev(10000, loc=0, scale=1, shape=0))
@@ -47,10 +49,10 @@ gev_Lmom <- function(dat) {
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))
   if (length(dat) >= GLOBAL_min_years_data) {
 
-    dat.Lmom <- nsRFA::Lmoments(dat)
+    dat.Lmom <- Lmoments(dat)
 
 
-    fail_safe <- plyr::failwith(NULL, nsRFA::par.GEV)
+    fail_safe <- failwith(NULL, par.GEV)
     fitted.param <- fail_safe(dat.Lmom[1], dat.Lmom[2], dat.Lmom[4])
 
     if (is.null(fitted.param) == TRUE) {
@@ -83,7 +85,7 @@ gev_mom <- function(dat) {
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))
   if (length(dat) >= GLOBAL_min_years_data) {
 
-  gevmom <- nsRFA::moments(dat)
+  gevmom <- moments(dat)
   # print(gevmom)
   kfunc <- function(k) {
     # print(k)
@@ -95,7 +97,7 @@ gev_mom <- function(dat) {
     }
   }
   # xi <- newtonRaphson(kfunc, -0.1, tol = 0.0001)$root  # FKB: initial code
-  fail_safe <- plyr::failwith(NULL, pracma::newtonRaphson)  # START FKB HACK
+  fail_safe <- failwith(NULL, newtonRaphson)  # START FKB HACK
   xi <- fail_safe(kfunc, -0.1, tol = 0.0001)
   xi <- xi$root
 
@@ -149,7 +151,7 @@ gev_bayes <- function(dat) {
       dnorm(x[3], 0, 0.2)
     }
 
-    fail_safe <- plyr::failwith(NULL, nsRFA::BayesianMCMC)
+    fail_safe <- failwith(NULL, BayesianMCMC)
     bayes <- fail_safe(dat, nbpas = 5000, nbchaines = 3, confint = c(0.05, 0.95), dist = "GEV", apriori = myprior)
 
     if (is.null(bayes) == TRUE) {
@@ -186,6 +188,7 @@ gev_bayes <- function(dat) {
 #' @description Function to calculate the posterior predictive distribution after calling gev_bayes
 #' @param (mmrp, mupars, spars, kpars) parameters returned by gev_bayes. mupars, spars, kpars are the ensemble of param$estimate
 #' @return param Estimated parameters and standard error returned as a list($estimate, $se)
+#' @importFrom nsRFA invF.GEV
 #' @export
 #'
 #' @examples Needs example
@@ -196,7 +199,7 @@ get_posterior_gev <- function(mmrp, mupars, spars, kpars) {
     st_temp <- spars[st]
     k_temp <- kpars[st]
     # param$estimate <- c(mean_temp, st_temp, k_temp)
-    nsRFA::invF.GEV(F = (1 - 1 / mmrp), mean_temp, st_temp, k_temp)
+    invF.GEV(F = (1 - 1 / mmrp), mean_temp, st_temp, k_temp)
   },simplify = "array")
   # 1 is for collums only 0.5 to return the median
   qqr <- apply(qqsample1, 1, quantile, 0.5)

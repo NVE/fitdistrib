@@ -1,0 +1,23 @@
+Package: fitdistrib
+Type: Package
+Title: A list a functions to fit data to probability distributions
+Version: 0.1
+Date: 2016-05-31
+Authors@R: person("Florian", "Kobierska Baffie", email = "fbaffie@gmail.com",
+  role = c("aut", "cre"))
+Description: This package was developed for the FlomKart project
+License: What license is it under?
+LazyData: TRUE
+RoxygenNote: 5.0.1
+Imports:
+  RNetCDF,
+  evd,
+  ismev,
+  pracma,
+  nsRFA,
+  fBasics,
+  stats4,
+  MASS,
+  glogis,
+  fitdistrplus,
+  plyr

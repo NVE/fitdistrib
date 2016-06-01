@@ -1,0 +1,17 @@
+{
+    "contents" : "Package: fitdistrib\nType: Package\nTitle: A list a functions to fit data to probability distributions\nVersion: 0.1\nDate: 2016-05-31\nAuthors@R: person(\"Florian\", \"Kobierska Baffie\", email = \"fbaffie@gmail.com\",\n  role = c(\"aut\", \"cre\"))\nDescription: This package was developed for the FlomKart project\nLicense: What license is it under?\nLazyData: TRUE\nRoxygenNote: 5.0.1\nImports:\n  RNetCDF,\n  evd,\n  ismev,\n  pracma,\n  nsRFA,\n  fBasics,\n  stats4,\n  MASS,\n  glogis,\n  fitdistrplus,\n  plyr\n",
+    "created" : 1464764885188.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3147695967",
+    "id" : "B407163D",
+    "lastKnownWriteTime" : 1464766559,
+    "path" : "~/GitHub/fitdistrib/DESCRIPTION",
+    "project_path" : "DESCRIPTION",
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "type" : "dcf"
+}

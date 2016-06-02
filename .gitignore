@@ -1,6 +1,3 @@
-# Ignore target at the top level
-/tests/
-
 # Windows image file caches
 Thumbs.db
 ehthumbs.db

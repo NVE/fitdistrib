@@ -13,7 +13,7 @@
 gev_mle <- function(dat) {
 
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))
-  if (length(dat) >= GLOBAL_min_years_data) {
+  if (length(dat) >= 1) {
 
 
     fail_safe <- failwith(NULL, fgev)
@@ -29,7 +29,7 @@ gev_mle <- function(dat) {
     invisible(param)
     }
     } else {
-      print(paste("Warning: this station has less than ", GLOBAL_min_years_data," years of data. Use another method!",
+      print(paste("Warning: this station has less than ", 1," years of data. Use another method!",
                   collapse = "", sep = ""))
       invisible(param)
     }
@@ -47,7 +47,7 @@ gev_mle <- function(dat) {
 gev_Lmom <- function(dat) {
 
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))
-  if (length(dat) >= GLOBAL_min_years_data) {
+  if (length(dat) >= 1) {
 
     dat.Lmom <- Lmoments(dat)
 
@@ -66,7 +66,7 @@ gev_Lmom <- function(dat) {
     invisible(param)
     }
   } else {
-    print(paste("Warning: this station has less than ", GLOBAL_min_years_data," years of data. Use another method!",
+    print(paste("Warning: this station has less than ", 1," years of data. Use another method!",
                   collapse = "", sep = ""))
     invisible(param)
   }
@@ -83,7 +83,7 @@ gev_Lmom <- function(dat) {
 gev_mom <- function(dat) {
 
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))
-  if (length(dat) >= GLOBAL_min_years_data) {
+  if (length(dat) >= 1) {
 
   gevmom <- moments(dat)
   # print(gevmom)
@@ -125,7 +125,7 @@ gev_mom <- function(dat) {
   invisible(param)
   }
   } else {
-    print(paste("Warning: this station has less than ", GLOBAL_min_years_data," years of data. Use another method!",
+    print(paste("Warning: this station has less than ", 1," years of data. Use another method!",
                   collapse = "",sep = ""))
     invisible(param)
     }
@@ -143,7 +143,7 @@ gev_bayes <- function(dat) {
 
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))
 
-  if (length(dat) >= GLOBAL_min_years_data) {
+  if (length(dat) >= 1) {
     # Prior for Bayes
     myprior <- function (x) {
       # x = vector of parameter values: c(location, scale, shape)
@@ -177,7 +177,7 @@ gev_bayes <- function(dat) {
       invisible(param)
     }
   } else {
-    print(paste("Warning: this station has less than ", GLOBAL_min_years_data," years of data. Use another method!",
+    print(paste("Warning: this station has less than ", 1," years of data. Use another method!",
                 collapse = "", sep = ""))
     invisible(param)
   }

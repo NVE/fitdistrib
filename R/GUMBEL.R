@@ -13,13 +13,13 @@
 gumbel_mle <- function(dat) {
 
   param <- list(estimate = c(NA, NA), se = c(NA, NA))
-  if (length(dat) >= GLOBAL_min_years_data) {
+  if (length(dat) >= 1) {
     param <- gum.fit(dat, show = FALSE)
     param$estimate <- param$mle
     invisible(param)
 
   } else {
-    print(paste("Warning: this station has less than ", GLOBAL_min_years_data," years of data. Use another method!",
+    print(paste("Warning: this station has less than ", 1," years of data. Use another method!",
                   collapse = "", sep = ""))
     invisible(param)
     }
@@ -38,12 +38,12 @@ gumbel_mle <- function(dat) {
 gumbel_Lmom <- function(dat) {
 
   param <- list(estimate = c(NA, NA), se = c(NA, NA))
-  if (length(dat) >= GLOBAL_min_years_data) {
+  if (length(dat) >= 1) {
     dat.mom <- Lmoments(dat)
     param$estimate <- invisible(as.numeric(par.gumb(dat.mom[1],dat.mom[2]))) # Standard error not yet implemented
     invisible(param)
   } else {
-    print(paste("Warning: this station has less than ",GLOBAL_min_years_data," years of data. Use another method!",
+    print(paste("Warning: this station has less than ",1," years of data. Use another method!",
                   collapse="",sep=""))
     invisible(param)
   }
@@ -60,7 +60,7 @@ gumbel_Lmom <- function(dat) {
 gumbel_mom <- function(dat) {
 
   param <- list(estimate = c(NA, NA), se = c(NA, NA))
-  if (length(dat) >= GLOBAL_min_years_data) {
+  if (length(dat) >= 1) {
     sigma <- moments(dat)[2]
     mu <-  moments(dat)[1]
     param$estimate[2] <- sigma / sqrt(1.645)
@@ -68,7 +68,7 @@ gumbel_mom <- function(dat) {
     # Standard error is not yet implemented
     invisible(param)
   } else {
-    print(paste("Warning: this station has less than ", GLOBAL_min_years_data," years of data. Use another method!",
+    print(paste("Warning: this station has less than ", 1," years of data. Use another method!",
                   collapse="",sep=""))
     invisible(param)
   }
@@ -87,7 +87,7 @@ gumbel_bayes <- function(dat) {
 
   param <- list(estimate = c(NA, NA), se = c(NA, NA))
 
-  if (length(dat) >= GLOBAL_min_years_data) {
+  if (length(dat) >= 1) {
 
     # Should we do gumbel with a prior? I tried, it didn't work
     fail_safe <- failwith(NULL, BayesianMCMC)
@@ -113,7 +113,7 @@ gumbel_bayes <- function(dat) {
       invisible(param)
     }
   } else {
-    print(paste("Warning: this station has less than ", GLOBAL_min_years_data," years of data. Use another method!",
+    print(paste("Warning: this station has less than ", 1," years of data. Use another method!",
                 collapse = "", sep = ""))
     invisible(param)
   }

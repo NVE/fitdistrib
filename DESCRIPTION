@@ -5,8 +5,21 @@ Version: 0.1
 Date: 2016-05-31
 Authors@R: person("Florian", "Kobierska Baffie", email = "fbaffie@gmail.com",
   role = c("aut", "cre"))
-Description: This package was developed for the FlomKart project
-License: What license is it under?
+Description: This package was developed for the FlomKart project.
+  It contains functions to fit probability distributions to flood data.
+  The following distributions are implemented:
+  - Generalized extreme value (gev)
+  - Generalized logistics (gl)
+  - Gumbel (gumbel)
+  - Gamma (gamma)
+  - Pearson III (pearson)
+  Four parameter estimation methods are available:
+  - Maximum likelihood (mle)
+  - Linear moments (Lmom)
+  - Ordinary moments (mom)
+  - Bayesian inference (bayes)
+  All functions are named distr_method (i.e. gl_bayes)
+License: MIT
 LazyData: TRUE
 RoxygenNote: 5.0.1
 Imports:

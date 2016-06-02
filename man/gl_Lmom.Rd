@@ -16,6 +16,6 @@ param Estimated parameters and standard error returned as a list($estimate, $se)
 Function to fit the Generalized Logistics distribution with the linear moments method
 }
 \examples{
-gl_Lmom(nsRFA::rand.genlogis(1000, 0, 1, 1))
+gl_Lmom(nsRFA::rand.genlogis(1000, 1000, 100, 0))
 }
 

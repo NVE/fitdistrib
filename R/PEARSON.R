@@ -14,13 +14,13 @@ pearson_mle <- function(dat) {
 # Returns param as a list($estimate, $se)
 
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))
-  if (length(dat) >= GLOBAL_min_years_data) {
+  if (length(dat) >= 1) {
 
     param$estimate <- ML_estimation (dat, dist = "P3")
     param$se <- c(NA, NA, NA)  # Standard error is not yet implemented
     invisible(param)
   } else {
-    print(paste("Warning: this station has less than ", GLOBAL_min_years_data," years of data. Use another method!",
+    print(paste("Warning: this station has less than ", 1," years of data. Use another method!",
                   collapse="",sep=""))
     invisible(param)
     }
@@ -40,7 +40,7 @@ pearson_Lmom <- function(dat) {
 # Returns param as a list($estimate, $se)
 
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))
-  if (length(dat) >= GLOBAL_min_years_data) {
+  if (length(dat) >= 1) {
     dat.mom <- Lmoments(dat)
     # ADD FAILSAFE
     fitted_param <- par.gamma(dat.mom[1], dat.mom[2], dat.mom[4])  # dat.mom[3] is not the skewness, it is the CV
@@ -49,7 +49,7 @@ pearson_Lmom <- function(dat) {
     param$se <- c(NA, NA, NA) # Standard error is not yet implemented
     invisible(param)
   } else {
-    print(paste("Warning: this station has less than ",GLOBAL_min_years_data," years of data. Use another method!",
+    print(paste("Warning: this station has less than ",1," years of data. Use another method!",
                   collapse="",sep=""))
     invisible(param)
     }
@@ -69,11 +69,11 @@ pearson_mom <- function(dat) {
   # Returns param as a list($estimate, $se)
 
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))
-  if (length(dat) >= GLOBAL_min_years_data) {
+  if (length(dat) >= 1) {
     param$estimate <- moment_estimation(dat, dist = "P3")  # Standard error is not yet implemented
     invisible(param)
   } else {
-    print(paste("Warning: this station has less than ", GLOBAL_min_years_data," years of data. Use another method!",
+    print(paste("Warning: this station has less than ", 1," years of data. Use another method!",
                 collapse="",sep=""))
     invisible(param)
   }
@@ -92,7 +92,7 @@ pearson_bayes <- function(dat) {
 
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))
 
-  if (length(dat) >= GLOBAL_min_years_data) {
+  if (length(dat) >= 1) {
     # Prior for Bayes
     myprior <- function (x) {
       # x = vector of parameter values: c(location, scale, shape)
@@ -126,7 +126,7 @@ pearson_bayes <- function(dat) {
       invisible(param)
     }
   } else {
-    print(paste("Warning: this station has less than ", GLOBAL_min_years_data," years of data. Use another method!",
+    print(paste("Warning: this station has less than ", 1," years of data. Use another method!",
                 collapse = "", sep = ""))
     invisible(param)
   }

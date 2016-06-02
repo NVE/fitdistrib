@@ -11,7 +11,7 @@
 #' @importFrom nsRFA par.genlogis
 #' @export
 #'
-#' @examples gl_mle(nsRFA::rand.genlogis(1000, 0, 1, 1))
+#' @examples gl_mle(nsRFA::rand.genlogis(1000, 1000, 100, 0))
 gl_mle <- function (xdat, ydat = NULL, mul = NULL, sigl = NULL, shl = NULL,
                     mulink = identity, siglink = identity, shlink = identity,
                     muinit = NULL, siginit = NULL, shinit = NULL, show = TRUE,
@@ -20,7 +20,7 @@ gl_mle <- function (xdat, ydat = NULL, mul = NULL, sigl = NULL, shl = NULL,
   show="FALSE"  # HACK FLO. Let's make sure we dont print anything
   z <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))  # HACK FLO
 
-  if (length(xdat) >= GLOBAL_min_years_data) {
+  if (length(xdat) >= 1) {
     # z <- list()
     npmu <- length(mul) + 1
     npsc <- length(sigl) + 1
@@ -129,7 +129,7 @@ gl_mle <- function (xdat, ydat = NULL, mul = NULL, sigl = NULL, shl = NULL,
     }
   }
   else {
-    print(paste("Warning: this station has less than ",GLOBAL_min_years_data," years of data. Use another method!",
+    print(paste("Warning: this station has less than ",1," years of data. Use another method!",
                 collapse = "",sep = ""))
     invisible(param)
   }
@@ -141,11 +141,11 @@ gl_mle <- function (xdat, ydat = NULL, mul = NULL, sigl = NULL, shl = NULL,
 #' @return param Estimated parameters and standard error returned as a list($estimate, $se)
 #' @export
 #'
-#' @examples gl_Lmom(nsRFA::rand.genlogis(1000, 0, 1, 1))
+#' @examples gl_Lmom(nsRFA::rand.genlogis(1000, 1000, 100, 0))
 gl_Lmom <- function(dat) {
 
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))
-  if (length(dat) >= GLOBAL_min_years_data) {
+  if (length(dat) >= 1) {
 
     dat.Lmom <- Lmoments(dat)
     # ADD FAILSAFE?
@@ -154,7 +154,7 @@ gl_Lmom <- function(dat) {
     param$estimate <- c(fitted.param$xi, fitted.param$alfa, fitted.param$k)
     return(param)
     } else {
-      print(paste("Warning: This station has less than ", GLOBAL_min_years_data," years of data. Use another method!",
+      print(paste("Warning: This station has less than ", 1," years of data. Use another method!",
                   collapse = "",sep = ""))
       invisible(param)
     }
@@ -168,11 +168,11 @@ gl_Lmom <- function(dat) {
 #' @importFrom pracma newtonRaphson
 #' @export
 #'
-#' @examples gl_mom(nsRFA::rand.genlogis(1000, 0, 1, 1))
+#' @examples gl_mom(nsRFA::rand.genlogis(1000, 1000, 100, 0))
 gl_mom <- function(dat) {
 
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))  # HACK FLO
-  if (length(dat) >= GLOBAL_min_years_data) {
+  if (length(dat) >= 1) {
     alpha1 <-  moments(dat)[1]
     alpha2 <- moments(dat)[2]
     alpha3 <- moments(dat)[4]
@@ -209,7 +209,7 @@ gl_mom <- function(dat) {
   invisible(param)
   }
   } else {
-    print(paste("Warning: this station has less than ",GLOBAL_min_years_data," years of data. Use another method!",
+    print(paste("Warning: this station has less than ",1," years of data. Use another method!",
                   collapse="",sep=""))
     invisible(param)
     }
@@ -223,12 +223,12 @@ gl_mom <- function(dat) {
 #' @importFrom plyr failwith
 #' @export
 #'
-#' @examples gl_bayes(nsRFA::rand.genlogis(1000, 0, 1, 1))
+#' @examples gl_bayes(nsRFA::rand.genlogis(1000, 1000, 100, 0))
 gl_bayes <- function(dat) {
 # Fit GL distribution with the Bayesian method
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))
 
-  if (length(dat) >= GLOBAL_min_years_data) {
+  if (length(dat) >= 1) {
     # Prior for Bayes
     myprior <- function (x) {
       # x = vector of parameter values: c(location, scale, shape)
@@ -261,7 +261,7 @@ gl_bayes <- function(dat) {
       invisible(param)
     }
   } else {
-    print(paste("Warning: this station has less than ", GLOBAL_min_years_data," years of data. Use another method!",
+    print(paste("Warning: this station has less than ", 1," years of data. Use another method!",
                 collapse = "", sep = ""))
     invisible(param)
   }

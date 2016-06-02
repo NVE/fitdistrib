@@ -8,13 +8,13 @@
 #' @importFrom MASS fitdistr
 #' @export
 #'
-#' @examples gamma_mle(rgamma(1000, loc=0, scale=1))
+#' @examples gamma_mle(rgamma(1000, shape=100, scale=1))
 gamma_mle <- function(dat) {
 # Fit GAMMA distribution with Maximum Likelihood Estimator
 # Returns param as a list($estimate, $se)
 
   param <- list(estimate = c(NA, NA), se = c(NA, NA))
-  if (length(dat) >= GLOBAL_min_years_data) {
+  if (length(dat) >= 1) {
 
     fail_safe <- failwith(NULL, fitdistr)
     temp.param <- fail_safe(dat, "gamma")
@@ -28,7 +28,7 @@ gamma_mle <- function(dat) {
     }
 
   } else {
-    print(paste("Warning: this station has less than ", GLOBAL_min_years_data," years of data. Use another method!",
+    print(paste("Warning: this station has less than ", 1," years of data. Use another method!",
                   collapse="",sep=""))
     invisible(param)
   }
@@ -41,13 +41,13 @@ gamma_mle <- function(dat) {
 #' @importFrom fitdistrplus mmedist
 #' @export
 #'
-#' @examples gamma_Lmom(rgamma(1000, loc=0, scale=1))
+#' @examples gamma_Lmom(rgamma(1000, shape=100, scale=1))
 gamma_Lmom <- function(dat) {
 # Fit GAMMA distribution with Lmoment estimator
 # Returns param as a list($estimate, $se)
 
   param <- list(estimate = c(NA, NA), se = c(NA, NA))
-  if (length(dat) >= GLOBAL_min_years_data) {
+  if (length(dat) >= 1) {
     # param <- mmedist(dat,"gamma")
 
     fail_safe <- failwith(NULL, mmedist)
@@ -63,7 +63,7 @@ gamma_Lmom <- function(dat) {
     }
 
   } else {
-    print(paste("Warning: this station has less than ",GLOBAL_min_years_data," years of data. Use another method!",
+    print(paste("Warning: this station has less than ",1," years of data. Use another method!",
                   collapse="",sep=""))
     invisible(param)
   }
@@ -75,13 +75,13 @@ gamma_Lmom <- function(dat) {
 #' @return param Estimated parameters (2) and standard error returned as a list($estimate, $se)
 #' @export
 #'
-#' @examples gamma_mom(rgamma(1000, loc=0, scale=1))
+#' @examples gamma_mom(rgamma(1000, shape=100, scale=1))
 gamma_mom <- function(dat) {
 # Fit GAMMA distribution with ordinary moment estimator
 # Returns param as a list($estimate, $se)
 
   param <- list(estimate = c(NA, NA), se = c(NA, NA))
-  if (length(dat) >= GLOBAL_min_years_data) {
+  if (length(dat) >= 1) {
     sigma <- moments(dat)[2]
     mu <-  moments(dat)[1]
     param$estimate <- c()
@@ -90,7 +90,7 @@ gamma_mom <- function(dat) {
     # Standard error is not yet implemented
     invisible(param)
   } else {
-    print(paste("Warning: this station has less than ",GLOBAL_min_years_data," years of data. Use another method!",
+    print(paste("Warning: this station has less than ",1," years of data. Use another method!",
                   collapse="",sep=""))
     invisible(param)
   }
@@ -103,15 +103,15 @@ gamma_mom <- function(dat) {
 #' @return param Estimated parameters and standard error returned as a list($estimate, $se)
 #' @export
 #'
-#' @examples gamma_bayes(rgamma(1000, loc=0, scale=1))
+#' @examples gamma_bayes(rgamma(1000, shape=100, scale=1))
 gamma_bayes <- function(dat) {
 
   param <- list(estimate = c(NA, NA), se = c(NA, NA))
-  if (length(dat) >= GLOBAL_min_years_data) {
+  if (length(dat) >= 1) {
     print("Returning NAs. This function has not been implemented yet!")
     invisible(param)
   } else {
-  print(paste("Warning: this station has less than ", GLOBAL_min_years_data," years of data. Use another method!",
+  print(paste("Warning: this station has less than ", 1," years of data. Use another method!",
               collapse = "", sep = ""))
   invisible(param)
   }

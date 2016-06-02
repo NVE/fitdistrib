@@ -17,6 +17,6 @@ Function to fit the gamma distribution with bayes method
 This is a dummy function because this method has not been implemented yet
 }
 \examples{
-gamma_bayes(rgamma(1000, loc=0, scale=1))
+gamma_bayes(rgamma(1000, shape=100, scale=1))
 }
 

@@ -1,5 +1,7 @@
 # Testing the GEV functions
 
+# bla bla to see if git sees it
+
 param <- c(0.1, 1, 0.1)
 tolerance <- 0.2  # 20% tolerance on parameter estimation accuracy
 expected_min <- param * (1 - tolerance)

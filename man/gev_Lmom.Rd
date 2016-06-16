@@ -19,4 +19,7 @@ Function to fit the GEV distribution with the linear moment method
 \examples{
 gev_Lmom(evd::rgev(10000, loc=0, scale=1, shape=0))
 }
+\seealso{
+\link{gev_mle}, \link{gev_mom}
+}
 

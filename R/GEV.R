@@ -5,6 +5,7 @@
 #' Fitting the GEV distribution with MLE
 #' @description Function to fit the GEV distribution with the maximum likelihood method
 #' @param dat the data that needs fitting (i.e. flood data)
+#' @seealso \link{gev_Lmom}, \link{gev_mom}
 #' @return param Estimated parameters and standard error returned as a list($estimate, $se)
 #' @importFrom evd fgev
 #' @export
@@ -38,6 +39,7 @@ gev_mle <- function(dat) {
 #' Fitting the GEV distribution with Lmom
 #' @description Function to fit the GEV distribution with the linear moment method
 #' @param dat the data that needs fitting (i.e. flood data)
+#' @seealso \link{gev_mle}, \link{gev_mom}
 #' @return param Estimated parameters and standard error returned as a list($estimate, $se).
 #' Standard error is not yet implemented
 #' @importFrom nsRFA par.GEV
@@ -75,6 +77,7 @@ gev_Lmom <- function(dat) {
 #' Fitting the GEV distribution with mom
 #' @description Function to fit the GEV distribution with the ordinary moments method
 #' @param dat the data that needs fitting (i.e. flood data)
+#' @seealso \link{gev_Lmom}, \link{gev_mle}
 #' @return param Estimated parameters and standard error returned as a list($estimate, $se)
 #' Standard error is not yet implemented
 #' @export

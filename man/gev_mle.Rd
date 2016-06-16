@@ -18,4 +18,7 @@ Function to fit the GEV distribution with the maximum likelihood method
 \examples{
 gev_mle(evd::rgev(10000, loc=0, scale=1, shape=0))
 }
+\seealso{
+\link{gev_Lmom}, \link{gev_mom}
+}
 

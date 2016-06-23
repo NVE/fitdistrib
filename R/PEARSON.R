@@ -14,11 +14,23 @@ pearson_mle <- function(dat) {
 # Returns param as a list($estimate, $se)
 
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))
+  fail_safe <- failwith(NULL, ML_estimation)
+
   if (length(dat) >= 1) {
 
-    param$estimate <- ML_estimation (dat, dist = "P3")
-    param$se <- c(NA, NA, NA)  # Standard error is not yet implemented
-    invisible(param)
+    fitted.param <- fail_safe(dat, dist = "P3")
+# Standard error is not yet implemented
+
+    if (is.null(fitted.param) == TRUE) {
+      print("Warning: the function ML_estimation failed in pearson_mle")
+      invisible(param)
+    } else {
+
+      param$estimate <- fitted.param
+      invisible(param)
+    }
+
+
   } else {
     print(paste("Warning: this station has less than ", 1," years of data. Use another method!",
                   collapse="",sep=""))
@@ -42,12 +54,21 @@ pearson_Lmom <- function(dat) {
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))
   if (length(dat) >= 1) {
     dat.mom <- Lmoments(dat)
-    # ADD FAILSAFE
-    fitted_param <- par.gamma(dat.mom[1], dat.mom[2], dat.mom[4])  # dat.mom[3] is not the skewness, it is the CV
-    # Creating the returning list
-    param$estimate <- c(fitted_param$xi, fitted_param$beta, fitted_param$alfa)
-    param$se <- c(NA, NA, NA) # Standard error is not yet implemented
-    invisible(param)
+
+    fail_safe <- failwith(NULL, par.gamma)
+
+    fitted.param <- fail_safe(dat.mom[1], dat.mom[2], dat.mom[4])  # dat.mom[3] is not the skewness, it is the CV
+# Standard error is not yet implemented
+
+    if (is.null(fitted.param) == TRUE) {
+      print("Warning: the function par.gamma failed in pearson_Lmom")
+      invisible(param)
+    } else {
+
+      param$estimate <- c(fitted.param$xi, fitted.param$beta, fitted.param$alfa)
+      invisible(param)
+    }
+
   } else {
     print(paste("Warning: this station has less than ",1," years of data. Use another method!",
                   collapse="",sep=""))
@@ -69,9 +90,21 @@ pearson_mom <- function(dat) {
   # Returns param as a list($estimate, $se)
 
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))
+  # Standard error is not yet implemented
+
   if (length(dat) >= 1) {
-    param$estimate <- moment_estimation(dat, dist = "P3")  # Standard error is not yet implemented
+
+    fail_safe <- failwith(NULL, moment_estimation)
+    fitted.param <- fail_safe(dat, dist = "P3")
+
+    if (is.null(fitted.param) == TRUE) {
+      print("Warning: the function moment_estimation failed in pearson_Lmom")
+      invisible(param)
+    } else {
+
+    param$estimate <- moment_estimation(dat, dist = "P3")
     invisible(param)
+    }
   } else {
     print(paste("Warning: this station has less than ", 1," years of data. Use another method!",
                 collapse="",sep=""))

@@ -23,15 +23,11 @@ License: MIT
 LazyData: TRUE
 RoxygenNote: 5.0.1
 Imports:
-  RNetCDF,
   evd,
   ismev,
   pracma,
   nsRFA,
-  fBasics,
-  stats4,
   MASS,
-  glogis,
   fitdistrplus,
   plyr
 Suggests:

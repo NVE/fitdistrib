@@ -4,9 +4,10 @@ R package for fitting probability distributions to flood data at NVE
 
 # Installation
 
-On RStudio, install package devtools:
+On RStudio, install package devtools and curl:
 
 > install.packages("devtools")
+> install.packages("curl")
 
 Afterwards, run these commands:
 

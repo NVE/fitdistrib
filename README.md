@@ -1,4 +1,4 @@
-[![Travis-CI Build Status](https://travis-ci.org/fbaffie/fitdistrib.svg?branch=master)](https://travis-ci.org/hadley/fitdistrib)
+[![Travis-CI Build Status](https://travis-ci.org/fbaffie/fitdistrib.svg?branch=master)](https://travis-ci.org/fbaffie/fitdistrib)
 
 # Package: fitdistrib
 

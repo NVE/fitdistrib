@@ -1,3 +1,5 @@
+[![Travis-CI Build Status](https://travis-ci.org/fbaffie/fitdistrib.svg?branch=master)](https://travis-ci.org/hadley/fitdistrib)
+
 # Package: fitdistrib
 
 R package for fitting probability distributions to flood data at NVE

@@ -1,4 +1,6 @@
 [![Travis-CI Build Status](https://travis-ci.org/fbaffie/fitdistrib.svg?branch=master)](https://travis-ci.org/fbaffie/fitdistrib)
+[![codecov](https://codecov.io/github/fbaffie/fitdistrib/branch/master/graphs/badge.svg)](https://codecov.io/gh/fbaffie/fitdistrib) 
+
 
 # Package: fitdistrib
 

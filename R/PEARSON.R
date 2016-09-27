@@ -172,7 +172,7 @@ pearson_bayes <- function(dat) {
 #' @importFrom nsRFA invF.gamma
 #' @export
 #'
-#' @examples Needs example
+#' @examples
 get_posterior_PEARSON <- function(mmrp,mupars,spars,kpars) {
 # Function for calculating the posterior predictive distribution
 

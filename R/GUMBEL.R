@@ -126,7 +126,7 @@ gumbel_bayes <- function(dat) {
 #' @importFrom nsRFA invF.gumb
 #' @export
 #'
-#' @examples Needs example
+#' @examples
 get_posterior_gumbel <- function(mmrp, mupars, spars) {
 
   qqsample1 <- sapply(seq(length(mupars)), function(st) {

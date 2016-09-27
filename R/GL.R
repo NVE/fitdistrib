@@ -273,7 +273,7 @@ gl_bayes <- function(dat) {
 #' @return param Estimated parameters and standard error returned as a list($estimate, $se)
 #' @export
 #'
-#' @examples Needs example
+#' @examples
 get_posterior_gl <- function(mmrp, mupars, spars, kpars) {
 
   qqsample1 <- sapply(seq(length(mupars)), function(st) {

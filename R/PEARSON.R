@@ -119,7 +119,7 @@ pearson_mom <- function(dat) {
 #' @return param Estimated parameters and standard error returned as a list($estimate, $se)
 #' @export
 #'
-#' @examples pearson_bayes(xxx(10000, loc=0, scale=1, shape=0))
+#' @examples pearson_bayes(nsRFA::rand.gamma(1000, 500, 100, 10))
 pearson_bayes <- function(dat) {
 # Fit PEARSON distribution with the Bayesian method
 

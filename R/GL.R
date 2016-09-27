@@ -9,6 +9,7 @@
 #' Standard error is not yet implemented
 #' @importFrom plyr failwith
 #' @importFrom nsRFA par.genlogis
+#' @importFrom stats optim
 #' @export
 #'
 #' @examples gl_mle(nsRFA::rand.genlogis(1000, 1000, 100, 0))
@@ -221,6 +222,8 @@ gl_mom <- function(dat) {
 #' @param dat the data that needs fitting (i.e. flood data)
 #' @return param Estimated parameters and standard error returned as a list($estimate, $se)
 #' @importFrom plyr failwith
+#' @importFrom stats dnorm
+#' @importFrom stats sd
 #' @export
 #'
 #' @examples gl_bayes(nsRFA::rand.genlogis(1000, 1000, 100, 0))
@@ -271,6 +274,7 @@ gl_bayes <- function(dat) {
 #' @description Function to calculate the posterior predictive distribution after calling gev_bayes
 #' @param (mmrp, mupars, spars, kpars) parameters returned by gev_bayes. mupars, spars, kpars are the ensemble of param$estimate
 #' @return param Estimated parameters and standard error returned as a list($estimate, $se)
+#' @importFrom stats quantile
 #' @export
 #'
 #' @examples

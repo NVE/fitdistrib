@@ -10,7 +10,7 @@ gl_mle(xdat, ydat = NULL, mul = NULL, sigl = NULL, shl = NULL,
   method = "Nelder-Mead", maxit = 10000, ...)
 }
 \arguments{
-\item{dat}{the data that needs fitting (i.e. flood data)}
+\item{...}{}
 }
 \value{
 param Estimated parameters and standard error returned as a list($estimate, $se)

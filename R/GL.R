@@ -2,9 +2,25 @@
 # All function related to fitting the Generalized Logistics distribution
 
 #' Fitting the GL distribution with MLE
+#'
+#' @param xdat
+#' @param ydat
+#' @param mul
+#' @param sigl
+#' @param shl
+#' @param mulink
+#' @param siglink
+#' @param shlink
+#' @param muinit
+#' @param siginit
+#' @param shinit
+#' @param show
+#' @param method
+#' @param maxit
+#' @param ...
+#'
 #' @description Function to fit the GL distribution with the maximum likelihood method.
 #' This function was copied from Kolbjorn's initial file
-#' @param dat the data that needs fitting (i.e. flood data)
 #' @return param Estimated parameters and standard error returned as a list($estimate, $se)
 #' Standard error is not yet implemented
 #' @importFrom plyr failwith

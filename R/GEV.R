@@ -194,7 +194,7 @@ gev_bayes <- function(dat) {
 #' @importFrom nsRFA invF.GEV
 #' @export
 #'
-#' @examples Needs example
+#' @examples
 get_posterior_gev <- function(mmrp, mupars, spars, kpars) {
 
   qqsample1 <- sapply(seq(length(mupars)), function(st) {

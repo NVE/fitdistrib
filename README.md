@@ -1,5 +1,5 @@
-[![Travis-CI Build Status](https://travis-ci.org/fbaffie/fitdistrib.svg?branch=master)](https://travis-ci.org/fbaffie/fitdistrib)
-[![codecov](https://codecov.io/github/fbaffie/fitdistrib/branch/master/graphs/badge.svg)](https://codecov.io/gh/fbaffie/fitdistrib) 
+[![Travis-CI Build Status](https://travis-ci.org/NVE/fitdistrib.svg?branch=master)](https://travis-ci.org/NVE/fitdistrib)
+[![codecov](https://codecov.io/github/NVE/fitdistrib/branch/master/graphs/badge.svg)](https://codecov.io/gh/NVE/fitdistrib) 
 
 `Warning: This package is still under development and is not fully mature`
 

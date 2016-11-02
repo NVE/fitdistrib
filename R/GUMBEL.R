@@ -9,7 +9,7 @@
 #' @importFrom ismev gum.fit
 #' @export
 #'
-#' @examples gumbel_mle(evd::rgumbel(1000, loc=0, scale=1))
+#' @examples gumbel_mle(test_data)
 gumbel_mle <- function(dat) {
 
   param <- list(estimate = c(NA, NA), se = c(NA, NA))
@@ -34,7 +34,7 @@ gumbel_mle <- function(dat) {
 #' @importFrom nsRFA par.gumb
 #' @export
 #'
-#' @examples gumbel_Lmom(evd::rgumbel(1000, loc=0, scale=1))
+#' @examples gumbel_Lmom(test_data)
 gumbel_Lmom <- function(dat) {
 
   param <- list(estimate = c(NA, NA), se = c(NA, NA))
@@ -56,7 +56,7 @@ gumbel_Lmom <- function(dat) {
 #' @importFrom nsRFA moments
 #' @export
 #'
-#' @examples gumbel_mom(evd::rgumbel(1000, loc=0, scale=1))
+#' @examples gumbel_mom(test_data)
 gumbel_mom <- function(dat) {
 
   param <- list(estimate = c(NA, NA), se = c(NA, NA))
@@ -82,7 +82,7 @@ gumbel_mom <- function(dat) {
 #' @importFrom nsRFA BayesianMCMC
 #' @export
 #'
-#' @examples gumbel_bayes(evd::rgumbel(1000, loc=0, scale=1))
+#' @examples gumbel_bayes(test_data)
 gumbel_bayes <- function(dat) {
 
   param <- list(estimate = c(NA, NA), se = c(NA, NA))

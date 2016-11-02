@@ -10,7 +10,7 @@
 #' @importFrom evd fgev
 #' @export
 #'
-#' @examples gev_mle(evd::rgev(10000, loc=1, scale=0.5, shape=0.8))
+#' @examples gev_mle(test_data)
 gev_mle <- function(dat) {
 
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))
@@ -45,7 +45,7 @@ gev_mle <- function(dat) {
 #' @importFrom nsRFA par.GEV
 #' @export
 #'
-#' @examples gev_Lmom(evd::rgev(10000, loc=1, scale=0.5, shape=0.8))
+#' @examples gev_Lmom(test_data)
 gev_Lmom <- function(dat) {
 
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))
@@ -82,7 +82,7 @@ gev_Lmom <- function(dat) {
 #' Standard error is not yet implemented
 #' @export
 #'
-#' @examples gev_mom(evd::rgev(10000, loc=1, scale=0.5, shape=0.8))
+#' @examples gev_mom(test_data)
 gev_mom <- function(dat) {
 
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))
@@ -141,7 +141,7 @@ gev_mom <- function(dat) {
 #' @return param Estimated parameters and standard error returned as a list($estimate, $se)
 #' @export
 #'
-#' @examples gev_bayes(evd::rgev(10000, loc=1, scale=0.5, shape=0.8))
+#' @examples gev_bayes(test_data)
 gev_bayes <- function(dat) {
 
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))

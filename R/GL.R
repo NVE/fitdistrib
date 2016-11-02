@@ -28,7 +28,7 @@
 #' @importFrom stats optim
 #' @export
 #'
-#' @examples gl_mle(nsRFA::rand.genlogis(1000, 1000, 100, 0))
+#' @examples gl_mle(test_data)
 gl_mle <- function (xdat, ydat = NULL, mul = NULL, sigl = NULL, shl = NULL,
                     mulink = identity, siglink = identity, shlink = identity,
                     muinit = NULL, siginit = NULL, shinit = NULL, show = TRUE,
@@ -158,7 +158,7 @@ gl_mle <- function (xdat, ydat = NULL, mul = NULL, sigl = NULL, shl = NULL,
 #' @return param Estimated parameters and standard error returned as a list($estimate, $se)
 #' @export
 #'
-#' @examples gl_Lmom(nsRFA::rand.genlogis(1000, 1000, 100, 0))
+#' @examples gl_Lmom(test_data)
 gl_Lmom <- function(dat) {
 
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))
@@ -185,7 +185,7 @@ gl_Lmom <- function(dat) {
 #' @importFrom pracma newtonRaphson
 #' @export
 #'
-#' @examples gl_mom(nsRFA::rand.genlogis(1000, 1000, 100, 0))
+#' @examples gl_mom(test_data)
 gl_mom <- function(dat) {
 
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))  # HACK FLO
@@ -242,7 +242,7 @@ gl_mom <- function(dat) {
 #' @importFrom stats sd
 #' @export
 #'
-#' @examples gl_bayes(nsRFA::rand.genlogis(1000, 1000, 100, 0))
+#' @examples gl_bayes(test_data)
 gl_bayes <- function(dat) {
 # Fit GL distribution with the Bayesian method
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))

@@ -8,7 +8,7 @@
 #' @importFrom nsRFA ML_estimation
 #' @export
 #'
-#' @examples pearson_mle(nsRFA::rand.gamma(1000, 500, 100, 10))
+#' @examples pearson_mle(test_data)
 pearson_mle <- function(dat) {
 # Fit PEARSON III distribution with Maximum Likelihood Estimator (nsRFA package)
 # Returns param as a list($estimate, $se)
@@ -46,7 +46,7 @@ pearson_mle <- function(dat) {
 #' @importFrom nsRFA par.gamma
 #' @export
 #'
-#' @examples pearson_Lmom(nsRFA::rand.gamma(1000, 500, 100, 10))
+#' @examples pearson_Lmom(test_data)
 pearson_Lmom <- function(dat) {
 # Fit PEARSON III distribution with the Lmoments
 # Returns param as a list($estimate, $se)
@@ -84,7 +84,7 @@ pearson_Lmom <- function(dat) {
 #' @importFrom nsRFA moment_estimation
 #' @export
 #'
-#' @examples pearson_mom(nsRFA::rand.gamma(1000, 500, 100, 10))
+#' @examples pearson_mom(test_data)
 pearson_mom <- function(dat) {
   # Fit PEARSON III distribution with method of moments (nsRFA package)
   # Returns param as a list($estimate, $se)
@@ -119,7 +119,7 @@ pearson_mom <- function(dat) {
 #' @return param Estimated parameters and standard error returned as a list($estimate, $se)
 #' @export
 #'
-#' @examples pearson_bayes(nsRFA::rand.gamma(1000, 500, 100, 10))
+#' @examples pearson_bayes(test_data)
 pearson_bayes <- function(dat) {
 # Fit PEARSON distribution with the Bayesian method
 

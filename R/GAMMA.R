@@ -8,7 +8,7 @@
 #' @importFrom MASS fitdistr
 #' @export
 #'
-#' @examples gamma_mle(rgamma(1000, shape=100, scale=1))
+#' @examples gamma_mle(test_data)
 gamma_mle <- function(dat) {
 # Fit GAMMA distribution with Maximum Likelihood Estimator
 # Returns param as a list($estimate, $se)
@@ -41,7 +41,7 @@ gamma_mle <- function(dat) {
 #' @importFrom fitdistrplus mmedist
 #' @export
 #'
-#' @examples gamma_Lmom(rgamma(1000, shape=100, scale=1))
+#' @examples gamma_Lmom(test_data)
 gamma_Lmom <- function(dat) {
 # Fit GAMMA distribution with Lmoment estimator
 # Returns param as a list($estimate, $se)
@@ -75,7 +75,7 @@ gamma_Lmom <- function(dat) {
 #' @return param Estimated parameters (2) and standard error returned as a list($estimate, $se)
 #' @export
 #'
-#' @examples gamma_mom(rgamma(1000, shape=100, scale=1))
+#' @examples gamma_mom(test_data)
 gamma_mom <- function(dat) {
 # Fit GAMMA distribution with ordinary moment estimator
 # Returns param as a list($estimate, $se)
@@ -103,7 +103,7 @@ gamma_mom <- function(dat) {
 #' @return param Estimated parameters and standard error returned as a list($estimate, $se)
 #' @export
 #'
-#' @examples gamma_bayes(rgamma(1000, shape=100, scale=1))
+#' @examples
 gamma_bayes <- function(dat) {
 
   param <- list(estimate = c(NA, NA), se = c(NA, NA))

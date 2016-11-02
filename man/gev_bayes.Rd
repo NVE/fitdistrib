@@ -17,6 +17,6 @@ Function to fit the GEV distribution with BayesianMCMC method
 WE assume that the shape parameter only has a prior with mean zero and standard deviation 0.2 (dnorm(x[3], 0, 0.2))
 }
 \examples{
-gev_bayes(evd::rgev(10000, loc=0, scale=1, shape=0))
+gev_bayes(evd::rgev(10000, loc=1, scale=0.5, shape=0.8))
 }
 

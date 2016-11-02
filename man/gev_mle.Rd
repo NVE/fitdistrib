@@ -16,7 +16,7 @@ param Estimated parameters and standard error returned as a list($estimate, $se)
 Function to fit the GEV distribution with the maximum likelihood method
 }
 \examples{
-gev_mle(evd::rgev(10000, loc=0, scale=1, shape=0))
+gev_mle(evd::rgev(10000, loc=1, scale=0.5, shape=0.8))
 }
 \seealso{
 \link{gev_Lmom}, \link{gev_mom}

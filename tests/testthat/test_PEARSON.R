@@ -2,7 +2,7 @@
 # Problem: fitting functions for pearson do not return the standard error
 # So the 95% confidence interval was replaced by +-20% accuracy
 
-param <- c(500, 100, 10)
+param <- c(9.5, 6, 2.5)  # Approximate parameters taken from the fit of the Narsjo "2.11" station data
 CI <- 2  # +-2 times the Std_error to get 95% confidence interval
 
 random_distrib <- nsRFA::rand.gamma(1000, param[1],param[2],param[3])

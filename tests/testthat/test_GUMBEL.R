@@ -1,8 +1,8 @@
 # Testing the GUMBEL functions
-# Problem: the function gumbel_Lmom does not return the standard error
+# Problem: the function gumbel_Lmom and gumbel_mom do not return the standard error
 # So the 95% confidence interval was replaced by +-20% accuracy
 
-param <- c(5, 0.5)
+param <- c(20, 6.6)  # Approximate parameters taken from the fit of the Narsjo "2.11" station data
 CI <- 2  # +-2 times the Std_error to get 95% confidence interval
 
 random_distrib <- evd::rgumbel(1000, loc=param[1], scale=param[2])
@@ -20,9 +20,6 @@ test_that("gumbel_mle returns reasonable estimates", {
   expected_min <- param * (1 - CI * test$se)
   expected_max <- param * (1 + CI * test$se)
 
-#   expected_min <- param * (1 - 0.2)
-#   expected_max <- param * (1 + 0.2)
-
   expect_true(test$estimate[1] < expected_max[1]  && test$estimate[1] > expected_min[1])
   expect_true(test$estimate[2] < expected_max[2]  && test$estimate[2] > expected_min[2])
 })
@@ -30,6 +27,26 @@ test_that("gumbel_mle returns reasonable estimates", {
 
 ####
 test <- gumbel_Lmom(random_distrib)
+
+test_that("gumbel_Lmom return list of correct length", {
+  expect_length(test$estimate, 2)
+  expect_length(test$se, 2)
+})
+
+test_that("gumbel_Lmom returns reasonable estimates", {
+
+  #    expected_min <- param * (1 - CI * test$se)
+  #    expected_max <- param * (1 + CI * test$se)
+
+  expected_min <- param * (1 - 0.2)
+  expected_max <- param * (1 + 0.2)
+
+  expect_true(test$estimate[1] < expected_max[1]  && test$estimate[1] > expected_min[1])
+  expect_true(test$estimate[2] < expected_max[2]  && test$estimate[2] > expected_min[2])
+})
+
+####
+test <- gumbel_mom(random_distrib)
 
 test_that("gumbel_Lmom return list of correct length", {
   expect_length(test$estimate, 2)

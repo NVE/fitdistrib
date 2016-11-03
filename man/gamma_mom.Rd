@@ -16,6 +16,6 @@ param Estimated parameters (2) and standard error returned as a list($estimate, 
 Function to fit the gamma distribution with the ordinary moments method
 }
 \examples{
-gamma_mom(rgamma(1000, shape=100, scale=1))
+gamma_mom(test_data)
 }
 

@@ -16,6 +16,6 @@ param Estimated parameters (2) and standard error returned as a list($estimate, 
 Function to fit the Gumbel distribution with the maximum likelihood method
 }
 \examples{
-gumbel_mle(evd::rgumbel(1000, loc=0, scale=1))
+gumbel_mle(test_data)
 }
 

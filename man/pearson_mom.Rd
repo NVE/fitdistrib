@@ -17,6 +17,6 @@ Standard error is not yet implemented
 Function to fit the pearson distribution with the ordinary moments method
 }
 \examples{
-pearson_mom(nsRFA::rand.gamma(1000, 500, 100, 10))
+pearson_mom(test_data)
 }
 

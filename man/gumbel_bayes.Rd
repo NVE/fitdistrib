@@ -17,6 +17,6 @@ Function to fit the Gumbel distribution with BayesianMCMC method
 We do not provide a prior for the BayesianMCMC function
 }
 \examples{
-gumbel_bayes(evd::rgumbel(1000, loc=0, scale=1))
+gumbel_bayes(test_data)
 }
 

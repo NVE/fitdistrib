@@ -17,7 +17,7 @@ Standard error is not yet implemented
 Function to fit the GEV distribution with the ordinary moments method
 }
 \examples{
-gev_mom(evd::rgev(10000, loc=1, scale=0.5, shape=0.8))
+gev_mom(test_data)
 }
 \seealso{
 \link{gev_Lmom}, \link{gev_mle}

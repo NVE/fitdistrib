@@ -16,6 +16,6 @@ param Estimated parameters and standard error returned as a list($estimate, $se)
 Function to fit the pearson distribution with the maximum likelihood method
 }
 \examples{
-pearson_mle(nsRFA::rand.gamma(1000, 500, 100, 10))
+pearson_mle(test_data)
 }
 

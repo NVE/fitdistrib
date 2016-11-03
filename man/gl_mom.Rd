@@ -17,6 +17,6 @@ Standard error is not yet implemented
 Function to fit the Generalized Logistics distribution with the ordinary moments method
 }
 \examples{
-gl_mom(nsRFA::rand.genlogis(1000, 1000, 100, 0))
+gl_mom(test_data)
 }
 

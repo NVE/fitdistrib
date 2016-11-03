@@ -16,7 +16,4 @@ param Estimated parameters and standard error returned as a list($estimate, $se)
 Function to fit the gamma distribution with bayes method
 This is a dummy function because this method has not been implemented yet
 }
-\examples{
-gamma_bayes(rgamma(1000, shape=100, scale=1))
-}
 

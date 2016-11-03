@@ -21,6 +21,6 @@ Function to fit the GL distribution with the maximum likelihood method.
 This function was copied from Kolbjorn's initial file
 }
 \examples{
-gl_mle(nsRFA::rand.genlogis(1000, 1000, 100, 0))
+gl_mle(test_data)
 }
 

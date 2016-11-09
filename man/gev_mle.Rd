@@ -16,7 +16,9 @@ param Estimated parameters and standard error returned as a list($estimate, $se)
 Function to fit the GEV distribution with the maximum likelihood method
 }
 \examples{
-gev_mle(test_data)
+library(FlomKart)
+estimate = gev_mle(test_data)
+plot_density(test_data, param = estimate, distr = "gev")
 }
 \seealso{
 \link{gev_Lmom}, \link{gev_mom}

@@ -10,7 +10,9 @@
 #' @importFrom evd fgev
 #' @export
 #'
-#' @examples gev_mle(test_data)
+#' @examples library(FlomKart)
+#' estimate = gev_mle(test_data)
+#' plot_density(test_data, param = estimate, distr = "gev")
 gev_mle <- function(dat) {
 
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))
@@ -45,7 +47,9 @@ gev_mle <- function(dat) {
 #' @importFrom nsRFA par.GEV
 #' @export
 #'
-#' @examples gev_Lmom(test_data)
+#' @examples library(FlomKart)
+#' estimate = gev_Lmom(test_data)
+#' plot_density(test_data, param = estimate, distr = "gev")
 gev_Lmom <- function(dat) {
 
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))
@@ -82,7 +86,9 @@ gev_Lmom <- function(dat) {
 #' Standard error is not yet implemented
 #' @export
 #'
-#' @examples gev_mom(test_data)
+#' @examples library(FlomKart)
+#' estimate = gev_mom(test_data)
+#' plot_density(test_data, param = estimate, distr = "gev")
 gev_mom <- function(dat) {
 
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))
@@ -141,7 +147,9 @@ gev_mom <- function(dat) {
 #' @return param Estimated parameters and standard error returned as a list($estimate, $se)
 #' @export
 #'
-#' @examples gev_bayes(test_data)
+#' @examples library(FlomKart)
+#' estimate = gev_bayes(test_data)
+#' plot_density(test_data, param = estimate, distr = "gev")
 gev_bayes <- function(dat) {
 
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))

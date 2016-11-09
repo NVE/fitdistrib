@@ -1,0 +1,41 @@
+## layout the order in which topics are presented in the rd docs
+# 1. get a list of topics with the following:
+#    db <- tools::Rd_db("fitdistrib")
+#    topics <- gsub("\\.Rd", "", names(db))
+#    cat(paste(topics, collapse = "\n"))
+# 2. arrange the topic names into sections as desired in the format below:
+## If you need to see which topics are missing, do the following in addition:
+# cur <- yaml::yaml.load_file("rd_index.yaml")
+# cur <- unlist(lapply(cur, function(x) x$topics))
+# cat(paste(setdiff(topics, cur), collapse = "\n"))
+knitr:
+  eval: true
+
+sections:
+-
+  section_name: Package Functions
+  topics:
+    - gamma_bayes
+    - gamma_Lmom
+    - gamma_mle
+    - gamma_mom
+    - get_posterior_gev
+    - get_posterior_gl
+    - get_posterior_gumbel
+    - get_posterior_PEARSON
+    - gev_bayes
+    - gev_Lmom
+    - gev_mle
+    - gev_mom
+    - gl_bayes
+    - gl_Lmom
+    - gl_mle
+    - gl_mom
+    - gumbel_bayes
+    - gumbel_Lmom
+    - gumbel_mle
+    - gumbel_mom
+    - pearson_bayes
+    - pearson_Lmom
+    - pearson_mle
+    - pearson_mom

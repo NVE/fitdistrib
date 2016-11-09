@@ -1,0 +1,1106 @@
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc" />
+
+  
+  
+  <title>fitdistrib Documentation</title>
+
+    <script src="rd_files/jquery-1.11.3/jquery.min.js"></script>
+  <link href="rd_files/bootstrap-3.3.2/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="rd_files/bootstrap-3.3.2/js/bootstrap.min.js"></script>
+  <script src="rd_files/bootstrap-3.3.2/shim/html5shiv.min.js"></script>
+  <script src="rd_files/bootstrap-3.3.2/shim/respond.min.js"></script>
+  <link href="rd_files/highlight-8.4/tomorrow.css" rel="stylesheet" />
+  <script src="rd_files/highlight-8.4/highlight.pack.js"></script>
+  <link href="rd_files/fontawesome-4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+  <script src="rd_files/stickykit-1.1.1/sticky-kit.min.js"></script>
+  <script src="rd_files/jqueryeasing-1.3/jquery.easing.min.js"></script>
+  <link href="rd_files/recliner-0.2.2/recliner.css" rel="stylesheet" />
+  <script src="rd_files/recliner-0.2.2/recliner.min.js"></script>
+  <script src="rd_files/recliner-0.2.2/onload.js"></script>
+  <link href="rd_files/packagedocs-0.0.1/pd.css" rel="stylesheet" />
+  <script src="rd_files/packagedocs-0.0.1/pd.js"></script>
+  <script src="rd_files/packagedocs-0.0.1/pd-sticky-toc.js"></script>
+  
+  
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+</head>
+
+<body>
+
+  
+  <header class="navbar navbar-white navbar-fixed-top" role="banner" id="header">
+    <div class="container">
+      <div class="navbar-header">
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+                <a href="index.html" class="navbar-brand page-scroll">
+        fitdistrib Documentation - Fitting probability distributions
+        </a>
+      </div>
+            <nav class="collapse navbar-collapse" role="navigation">
+        <ul class="nav nav-pills pull-right">
+<li>
+<a href='index.html'>Docs</a>
+</li>
+<li class="active">
+<a href='rd.html'>Package Ref</a>
+</li>
+<li>
+<a href='https://github.com/NVE/fitdistrib'>Github <i class='fa fa-github'></i></a>
+</li>
+        </ul>
+      </nav>
+          </div>
+  </header>
+
+  <!-- Begin Body -->
+  <div class="container">
+    <div class="row">
+            <div class="col-md-3" id="sidebar-col">
+        <div id="toc">
+          <ul>
+          <li><a href="#package-functions">Package Functions</a><ul>
+          <li><a href="#gamma_bayes">gamma_bayes</a></li>
+          <li><a href="#gamma_lmom">gamma_Lmom</a></li>
+          <li><a href="#gamma_mle">gamma_mle</a></li>
+          <li><a href="#gamma_mom">gamma_mom</a></li>
+          <li><a href="#get_posterior_gev">get_posterior_gev</a></li>
+          <li><a href="#get_posterior_gl">get_posterior_gl</a></li>
+          <li><a href="#get_posterior_gumbel">get_posterior_gumbel</a></li>
+          <li><a href="#get_posterior_pearson">get_posterior_PEARSON</a></li>
+          <li><a href="#gev_bayes">gev_bayes</a></li>
+          <li><a href="#gev_lmom">gev_Lmom</a></li>
+          <li><a href="#gev_mle">gev_mle</a></li>
+          <li><a href="#gev_mom">gev_mom</a></li>
+          <li><a href="#gl_bayes">gl_bayes</a></li>
+          <li><a href="#gl_lmom">gl_Lmom</a></li>
+          <li><a href="#gl_mle">gl_mle</a></li>
+          <li><a href="#gl_mom">gl_mom</a></li>
+          <li><a href="#gumbel_bayes">gumbel_bayes</a></li>
+          <li><a href="#gumbel_lmom">gumbel_Lmom</a></li>
+          <li><a href="#gumbel_mle">gumbel_mle</a></li>
+          <li><a href="#gumbel_mom">gumbel_mom</a></li>
+          <li><a href="#pearson_bayes">pearson_bayes</a></li>
+          <li><a href="#pearson_lmom">pearson_Lmom</a></li>
+          <li><a href="#pearson_mle">pearson_mle</a></li>
+          <li><a href="#pearson_mom">pearson_mom</a></li>
+          </ul></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-9" id="content-col">
+      
+<div id="content-top"></div>
+<h1>
+A list a functions to fit data to probability distributions
+</h1>
+<p>
+<strong>Authors:</strong> <a href="mailto:fbaffie@gmail.com">Florian Kobierska Baffie</a> [aut, cre]
+</p>
+<p>
+<strong>Version:</strong> 0.1
+</p>
+<p>
+<strong>License:</strong> MIT
+</p>
+<h4>
+Description
+</h4>
+<p>
+This package was developed for the FlomKart project. It contains functions to fit probability distributions to flood data. The following distributions are implemented: - Generalized extreme value (gev) - Generalized logistics (gl) - Gumbel (gumbel) - Gamma (gamma) - Pearson III (pearson) Four parameter estimation methods are available: - Maximum likelihood (mle) - Linear moments (Lmom) - Ordinary moments (mom) - Bayesian inference (bayes) All functions are named distr_method (i.e. gl_bayes)
+</p>
+<h4>
+Imports
+</h4>
+<p>
+evd, ismev, pracma, nsRFA, MASS, fitdistrplus, plyr
+</p>
+<h4>
+Suggests
+</h4>
+<p>
+testthat, packagedocs
+</p>
+<div id="package-functions" class="section level1">
+<h1>Package Functions</h1>
+<div id="gamma_bayes" class="section level2">
+<h2>gamma_bayes</h2>
+<a id="gamma_bayes_alias"></a>
+<h3>
+Fitting the gamma distribution with Bayesian inference
+</h3>
+<p class="rd-p">
+Function to fit the gamma distribution with bayes method This is a dummy function because this method has not been implemented yet
+</p>
+<h4>
+Usage
+</h4>
+<pre class="r"><code><div>gamma_bayes(dat)</div></code></pre>
+<h4>
+Arguments
+</h4>
+<dl class="rd-dl">
+<dt>
+dat
+</dt>
+<dd class="rd-dd">
+the data that needs fitting (i.e. flood data)
+</dd>
+</dl>
+<h4>
+Value
+</h4>
+<p class="rd-p">
+<dl>
+param Estimated parameters and standard error returned as a list($estimate, $se)
+</dl>
+</p>
+</div>
+<div id="gamma_lmom" class="section level2">
+<h2>gamma_Lmom</h2>
+<a id="gamma_Lmom_alias"></a>
+<h3>
+Fitting the gamma distribution with Lmom
+</h3>
+<p class="rd-p">
+Function to fit the gamma distribution with the linear moment method
+</p>
+<h4>
+Usage
+</h4>
+<pre class="r"><code><div>gamma_Lmom(dat)</div></code></pre>
+<h4>
+Arguments
+</h4>
+<dl class="rd-dl">
+<dt>
+dat
+</dt>
+<dd class="rd-dd">
+the data that needs fitting (i.e. flood data)
+</dd>
+</dl>
+<h4>
+Value
+</h4>
+<p class="rd-p">
+<dl>
+param Estimated parameters (2) and standard error returned as a list($estimate, $se)
+</dl>
+</p>
+<h4>
+Examples
+</h4>
+<pre class="r"><code>library(FlomKart)
+estimate = gamma_Lmom(test_data)
+plot_density(test_data, param = estimate, distr = &quot;gamma&quot;)</code></pre>
+<p><img src="rd_files/figure-html/gamma_Lmom_id_2-1.png" width="624" /></p>
+</div>
+<div id="gamma_mle" class="section level2">
+<h2>gamma_mle</h2>
+<a id="gamma_mle_alias"></a>
+<h3>
+Fitting the gamma distribution with MLE
+</h3>
+<p class="rd-p">
+Function to fit the gamma distribution with the maximum likelihood method
+</p>
+<h4>
+Usage
+</h4>
+<pre class="r"><code><div>gamma_mle(dat)</div></code></pre>
+<h4>
+Arguments
+</h4>
+<dl class="rd-dl">
+<dt>
+dat
+</dt>
+<dd class="rd-dd">
+the data that needs fitting (i.e. flood data)
+</dd>
+</dl>
+<h4>
+Value
+</h4>
+<p class="rd-p">
+<dl>
+param Estimated parameters (2) and standard error returned as a list($estimate, $se)
+</dl>
+</p>
+<h4>
+Examples
+</h4>
+<pre class="r"><code>library(FlomKart)
+estimate = gamma_mle(test_data)
+plot_density(test_data, param = estimate, distr = &quot;gamma&quot;)</code></pre>
+<p><img src="rd_files/figure-html/gamma_mle_id_3-1.png" width="624" /></p>
+</div>
+<div id="gamma_mom" class="section level2">
+<h2>gamma_mom</h2>
+<a id="gamma_mom_alias"></a>
+<h3>
+Fitting the gamma distribution with mom
+</h3>
+<p class="rd-p">
+Function to fit the gamma distribution with the ordinary moments method
+</p>
+<h4>
+Usage
+</h4>
+<pre class="r"><code><div>gamma_mom(dat)</div></code></pre>
+<h4>
+Arguments
+</h4>
+<dl class="rd-dl">
+<dt>
+dat
+</dt>
+<dd class="rd-dd">
+the data that needs fitting (i.e. flood data)
+</dd>
+</dl>
+<h4>
+Value
+</h4>
+<p class="rd-p">
+<dl>
+param Estimated parameters (2) and standard error returned as a list($estimate, $se)
+</dl>
+</p>
+<h4>
+Examples
+</h4>
+<pre class="r"><code>library(FlomKart)
+estimate = gamma_mom(test_data)
+plot_density(test_data, param = estimate, distr = &quot;gamma&quot;)</code></pre>
+<p><img src="rd_files/figure-html/gamma_mom_id_4-1.png" width="624" /></p>
+</div>
+<div id="get_posterior_gev" class="section level2">
+<h2>get_posterior_gev</h2>
+<a id="get_posterior_gev_alias"></a>
+<h3>
+Calculating the posterior predictive distribution
+</h3>
+<p class="rd-p">
+Function to calculate the posterior predictive distribution after calling gev_bayes
+</p>
+<h4>
+Usage
+</h4>
+<pre class="r"><code><div>get_posterior_gev(mmrp, mupars, spars, kpars)</div></code></pre>
+<h4>
+Arguments
+</h4>
+<dl class="rd-dl">
+<dt>
+(mmrp,
+</dt>
+<dd class="rd-dd">
+mupars, spars, kpars) parameters returned by gev_bayes. mupars, spars, kpars are the ensemble of param$estimate
+</dd>
+</dl>
+<h4>
+Value
+</h4>
+<p class="rd-p">
+<dl>
+param Estimated parameters and standard error returned as a list($estimate, $se)
+</dl>
+</p>
+</div>
+<div id="get_posterior_gl" class="section level2">
+<h2>get_posterior_gl</h2>
+<a id="get_posterior_gl_alias"></a>
+<h3>
+Calculating the posterior predictive distribution for GL
+</h3>
+<p class="rd-p">
+Function to calculate the posterior predictive distribution after calling gev_bayes
+</p>
+<h4>
+Usage
+</h4>
+<pre class="r"><code><div>get_posterior_gl(mmrp, mupars, spars, kpars)</div></code></pre>
+<h4>
+Arguments
+</h4>
+<dl class="rd-dl">
+<dt>
+(mmrp,
+</dt>
+<dd class="rd-dd">
+mupars, spars, kpars) parameters returned by gev_bayes. mupars, spars, kpars are the ensemble of param$estimate
+</dd>
+</dl>
+<h4>
+Value
+</h4>
+<p class="rd-p">
+<dl>
+param Estimated parameters and standard error returned as a list($estimate, $se)
+</dl>
+</p>
+</div>
+<div id="get_posterior_gumbel" class="section level2">
+<h2>get_posterior_gumbel</h2>
+<a id="get_posterior_gumbel_alias"></a>
+<h3>
+Calculating the posterior predictive distribution
+</h3>
+<p class="rd-p">
+Function to calculate the posterior predictive distribution after calling gumbel_bayes
+</p>
+<h4>
+Usage
+</h4>
+<pre class="r"><code><div>get_posterior_gumbel(mmrp, mupars, spars)</div></code></pre>
+<h4>
+Arguments
+</h4>
+<dl class="rd-dl">
+<dt>
+(mmrp,
+</dt>
+<dd class="rd-dd">
+mupars, spars) parameters returned by gumbel_bayes. mupars, spars are the ensemble of param$estimate
+</dd>
+</dl>
+<h4>
+Value
+</h4>
+<p class="rd-p">
+<dl>
+param Estimated parameters and standard error returned as a list($estimate, $se)
+</dl>
+</p>
+</div>
+<div id="get_posterior_pearson" class="section level2">
+<h2>get_posterior_PEARSON</h2>
+<a id="get_posterior_PEARSON_alias"></a>
+<h3>
+Calculating the posterior predictive distribution
+</h3>
+<p class="rd-p">
+Function to calculate the posterior predictive distribution after calling pearson_bayes
+</p>
+<h4>
+Usage
+</h4>
+<pre class="r"><code><div>get_posterior_PEARSON(mmrp, mupars, spars, kpars)</div></code></pre>
+<h4>
+Arguments
+</h4>
+<dl class="rd-dl">
+<dt>
+(mmrp,
+</dt>
+<dd class="rd-dd">
+mupars, spars, kpars) parameters returned by pearson_bayes. mupars, spars, kpars are the ensemble of param$estimate
+</dd>
+</dl>
+<h4>
+Value
+</h4>
+<p class="rd-p">
+<dl>
+param Estimated parameters and standard error returned as a list($estimate, $se)
+</dl>
+</p>
+</div>
+<div id="gev_bayes" class="section level2">
+<h2>gev_bayes</h2>
+<a id="gev_bayes_alias"></a>
+<h3>
+Fitting the GEV distribution with Bayesian inference
+</h3>
+<p class="rd-p">
+Function to fit the GEV distribution with BayesianMCMC method WE assume that the shape parameter only has a prior with mean zero and standard deviation 0.2 (dnorm(x[3], 0, 0.2))
+</p>
+<h4>
+Usage
+</h4>
+<pre class="r"><code><div>gev_bayes(dat)</div></code></pre>
+<h4>
+Arguments
+</h4>
+<dl class="rd-dl">
+<dt>
+dat
+</dt>
+<dd class="rd-dd">
+the data that needs fitting (i.e. flood data)
+</dd>
+</dl>
+<h4>
+Value
+</h4>
+<p class="rd-p">
+<dl>
+param Estimated parameters and standard error returned as a list($estimate, $se)
+</dl>
+</p>
+<h4>
+Examples
+</h4>
+<pre class="r"><code>library(FlomKart)
+estimate = gev_bayes(test_data)
+plot_density(test_data, param = estimate, distr = &quot;gev&quot;)</code></pre>
+<p><img src="rd_files/figure-html/gev_bayes_id_9-1.png" width="624" /></p>
+</div>
+<div id="gev_lmom" class="section level2">
+<h2>gev_Lmom</h2>
+<a id="gev_Lmom_alias"></a>
+<h3>
+Fitting the GEV distribution with Lmom
+</h3>
+<p class="rd-p">
+Function to fit the GEV distribution with the linear moment method
+</p>
+<h4>
+Usage
+</h4>
+<pre class="r"><code><div>gev_Lmom(dat)</div></code></pre>
+<h4>
+Arguments
+</h4>
+<dl class="rd-dl">
+<dt>
+dat
+</dt>
+<dd class="rd-dd">
+the data that needs fitting (i.e. flood data)
+</dd>
+</dl>
+<h4>
+Value
+</h4>
+<p class="rd-p">
+<dl>
+param Estimated parameters and standard error returned as a list($estimate, $se). Standard error is not yet implemented
+</dl>
+</p>
+<h4>
+Examples
+</h4>
+<pre class="r"><code>library(FlomKart)
+estimate = gev_Lmom(test_data)
+plot_density(test_data, param = estimate, distr = &quot;gev&quot;)</code></pre>
+<p><img src="rd_files/figure-html/gev_Lmom_id_10-1.png" width="624" /></p>
+<h4>
+See also
+</h4>
+<p><a href=#gev_mle>gev_mle</a>, <a href=#gev_mom>gev_mom</a></p>
+</div>
+<div id="gev_mle" class="section level2">
+<h2>gev_mle</h2>
+<a id="gev_mle_alias"></a>
+<h3>
+Fitting the GEV distribution with MLE
+</h3>
+<p class="rd-p">
+Function to fit the GEV distribution with the maximum likelihood method
+</p>
+<h4>
+Usage
+</h4>
+<pre class="r"><code><div>gev_mle(dat)</div></code></pre>
+<h4>
+Arguments
+</h4>
+<dl class="rd-dl">
+<dt>
+dat
+</dt>
+<dd class="rd-dd">
+the data that needs fitting (i.e. flood data)
+</dd>
+</dl>
+<h4>
+Value
+</h4>
+<p class="rd-p">
+<dl>
+param Estimated parameters and standard error returned as a list($estimate, $se)
+</dl>
+</p>
+<h4>
+Examples
+</h4>
+<pre class="r"><code>library(FlomKart)
+estimate = gev_mle(test_data)
+plot_density(test_data, param = estimate, distr = &quot;gev&quot;)</code></pre>
+<p><img src="rd_files/figure-html/gev_mle_id_11-1.png" width="624" /></p>
+<h4>
+See also
+</h4>
+<p><a href=#gev_lmom>gev_Lmom</a>, <a href=#gev_mom>gev_mom</a></p>
+</div>
+<div id="gev_mom" class="section level2">
+<h2>gev_mom</h2>
+<a id="gev_mom_alias"></a>
+<h3>
+Fitting the GEV distribution with mom
+</h3>
+<p class="rd-p">
+Function to fit the GEV distribution with the ordinary moments method
+</p>
+<h4>
+Usage
+</h4>
+<pre class="r"><code><div>gev_mom(dat)</div></code></pre>
+<h4>
+Arguments
+</h4>
+<dl class="rd-dl">
+<dt>
+dat
+</dt>
+<dd class="rd-dd">
+the data that needs fitting (i.e. flood data)
+</dd>
+</dl>
+<h4>
+Value
+</h4>
+<p class="rd-p">
+<dl>
+param Estimated parameters and standard error returned as a list($estimate, $se) Standard error is not yet implemented
+</dl>
+</p>
+<h4>
+Examples
+</h4>
+<pre class="r"><code>library(FlomKart)
+estimate = gev_mom(test_data)
+plot_density(test_data, param = estimate, distr = &quot;gev&quot;)</code></pre>
+<p><img src="rd_files/figure-html/gev_mom_id_12-1.png" width="624" /></p>
+<h4>
+See also
+</h4>
+<p><a href=#gev_lmom>gev_Lmom</a>, <a href=#gev_mle>gev_mle</a></p>
+</div>
+<div id="gl_bayes" class="section level2">
+<h2>gl_bayes</h2>
+<a id="gl_bayes_alias"></a>
+<h3>
+Fitting the GL distribution with Bayesian inference
+</h3>
+<p class="rd-p">
+Function to fit the Generalized Logistics distribution with BayesianMCMC method We assume that the shape parameter only has a prior with mean zero and standard deviation 0.2 (dnorm(x[3], 0, 0.2))
+</p>
+<h4>
+Usage
+</h4>
+<pre class="r"><code><div>gl_bayes(dat)</div></code></pre>
+<h4>
+Arguments
+</h4>
+<dl class="rd-dl">
+<dt>
+dat
+</dt>
+<dd class="rd-dd">
+the data that needs fitting (i.e. flood data)
+</dd>
+</dl>
+<h4>
+Value
+</h4>
+<p class="rd-p">
+<dl>
+param Estimated parameters and standard error returned as a list($estimate, $se)
+</dl>
+</p>
+<h4>
+Examples
+</h4>
+<pre class="r"><code>library(FlomKart)
+estimate = gl_bayes(test_data)
+plot_density(test_data, param = estimate, distr = &quot;gl&quot;)</code></pre>
+<pre><code>## Error in plot_density(test_data, param = estimate, distr = &quot;gl&quot;): could not find function &quot;f.genlogis&quot;</code></pre>
+<p><img src="rd_files/figure-html/gl_bayes_id_13-1.png" width="624" /></p>
+</div>
+<div id="gl_lmom" class="section level2">
+<h2>gl_Lmom</h2>
+<a id="gl_Lmom_alias"></a>
+<h3>
+Fitting the GL distribution with Lmom
+</h3>
+<p class="rd-p">
+Function to fit the Generalized Logistics distribution with the linear moments method
+</p>
+<h4>
+Usage
+</h4>
+<pre class="r"><code><div>gl_Lmom(dat)</div></code></pre>
+<h4>
+Arguments
+</h4>
+<dl class="rd-dl">
+<dt>
+dat
+</dt>
+<dd class="rd-dd">
+the data that needs fitting (i.e. flood data)
+</dd>
+</dl>
+<h4>
+Value
+</h4>
+<p class="rd-p">
+<dl>
+param Estimated parameters and standard error returned as a list($estimate, $se)
+</dl>
+</p>
+<h4>
+Examples
+</h4>
+<pre class="r"><code>library(FlomKart)
+estimate = gl_Lmom(test_data)
+plot_density(test_data, param = estimate, distr = &quot;gl&quot;)</code></pre>
+<pre><code>## Error in plot_density(test_data, param = estimate, distr = &quot;gl&quot;): could not find function &quot;f.genlogis&quot;</code></pre>
+<p><img src="rd_files/figure-html/gl_Lmom_id_14-1.png" width="624" /></p>
+</div>
+<div id="gl_mle" class="section level2">
+<h2>gl_mle</h2>
+<a id="gl_mle_alias"></a>
+<h3>
+Fitting the GL distribution with MLE
+</h3>
+<p class="rd-p">
+Function to fit the GL distribution with the maximum likelihood method. This function was copied from Kolbjorn’s initial file
+</p>
+<h4>
+Usage
+</h4>
+<pre class="r"><code><div>gl_mle(xdat, ydat&nbsp;=&nbsp;NULL, mul&nbsp;=&nbsp;NULL, sigl&nbsp;=&nbsp;NULL, shl&nbsp;=&nbsp;NULL, mulink&nbsp;=&nbsp;identity, siglink&nbsp;=&nbsp;identity, shlink&nbsp;=&nbsp;identity, muinit&nbsp;=&nbsp;NULL, siginit&nbsp;=&nbsp;NULL, shinit&nbsp;=&nbsp;NULL, show&nbsp;=&nbsp;TRUE, method&nbsp;=&nbsp;"Nelder-Mead", maxit&nbsp;=&nbsp;10000, ...)</div></code></pre>
+<h4>
+Arguments
+</h4>
+<dl class="rd-dl">
+<dt>
+…
+</dt>
+<dd class="rd-dd">
+Function to fit the GL distribution with the maximum likelihood method. This function was copied from Kolbjorn’s initial file
+</dd>
+</dl>
+<h4>
+Value
+</h4>
+<p class="rd-p">
+<dl>
+param Estimated parameters and standard error returned as a list($estimate, $se) Standard error is not yet implemented
+</dl>
+</p>
+<h4>
+Examples
+</h4>
+<pre class="r"><code>library(FlomKart)
+estimate = gl_mle(test_data)
+plot_density(test_data, param = estimate, distr = &quot;gl&quot;)</code></pre>
+<pre><code>## Error in plot_density(test_data, param = estimate, distr = &quot;gl&quot;): could not find function &quot;f.genlogis&quot;</code></pre>
+<p><img src="rd_files/figure-html/gl_mle_id_15-1.png" width="624" /></p>
+</div>
+<div id="gl_mom" class="section level2">
+<h2>gl_mom</h2>
+<a id="gl_mom_alias"></a>
+<h3>
+Fitting the GL distribution with mom
+</h3>
+<p class="rd-p">
+Function to fit the Generalized Logistics distribution with the ordinary moments method
+</p>
+<h4>
+Usage
+</h4>
+<pre class="r"><code><div>gl_mom(dat)</div></code></pre>
+<h4>
+Arguments
+</h4>
+<dl class="rd-dl">
+<dt>
+dat
+</dt>
+<dd class="rd-dd">
+the data that needs fitting (i.e. flood data)
+</dd>
+</dl>
+<h4>
+Value
+</h4>
+<p class="rd-p">
+<dl>
+param Estimated parameters and standard error returned as a list($estimate, $se). Standard error is not yet implemented
+</dl>
+</p>
+<h4>
+Examples
+</h4>
+<pre class="r"><code>library(FlomKart)
+estimate = gl_mom(test_data)
+plot_density(test_data, param = estimate, distr = &quot;gl&quot;)</code></pre>
+<pre><code>## Error in plot_density(test_data, param = estimate, distr = &quot;gl&quot;): could not find function &quot;f.genlogis&quot;</code></pre>
+<p><img src="rd_files/figure-html/gl_mom_id_16-1.png" width="624" /></p>
+</div>
+<div id="gumbel_bayes" class="section level2">
+<h2>gumbel_bayes</h2>
+<a id="gumbel_bayes_alias"></a>
+<h3>
+Fitting the Gumbel distribution with Bayesian inference
+</h3>
+<p class="rd-p">
+Function to fit the Gumbel distribution with BayesianMCMC method We do not provide a prior for the BayesianMCMC function
+</p>
+<h4>
+Usage
+</h4>
+<pre class="r"><code><div>gumbel_bayes(dat)</div></code></pre>
+<h4>
+Arguments
+</h4>
+<dl class="rd-dl">
+<dt>
+dat
+</dt>
+<dd class="rd-dd">
+the data that needs fitting (i.e. flood data)
+</dd>
+</dl>
+<h4>
+Value
+</h4>
+<p class="rd-p">
+<dl>
+param Estimated parameters and standard error returned as a list($estimate, $se)
+</dl>
+</p>
+<h4>
+Examples
+</h4>
+<pre class="r"><code>library(FlomKart)
+estimate = gumbel_bayes(test_data)
+plot_density(test_data, param = estimate, distr = &quot;gumbel&quot;)</code></pre>
+<pre><code>## Error in plot_density(test_data, param = estimate, distr = &quot;gumbel&quot;): could not find function &quot;dgumbel&quot;</code></pre>
+<p><img src="rd_files/figure-html/gumbel_bayes_id_17-1.png" width="624" /></p>
+</div>
+<div id="gumbel_lmom" class="section level2">
+<h2>gumbel_Lmom</h2>
+<a id="gumbel_Lmom_alias"></a>
+<h3>
+Fitting the Gumbel distribution with Lmom
+</h3>
+<p class="rd-p">
+Function to fit the Gumbel distribution with the linear moment method
+</p>
+<h4>
+Usage
+</h4>
+<pre class="r"><code><div>gumbel_Lmom(dat)</div></code></pre>
+<h4>
+Arguments
+</h4>
+<dl class="rd-dl">
+<dt>
+dat
+</dt>
+<dd class="rd-dd">
+the data that needs fitting (i.e. flood data)
+</dd>
+</dl>
+<h4>
+Value
+</h4>
+<p class="rd-p">
+<dl>
+param Estimated parameters (2) and standard error returned as a list($estimate, $se)
+</dl>
+</p>
+<h4>
+Examples
+</h4>
+<pre class="r"><code>library(FlomKart)
+estimate = gumbel_Lmom(test_data)
+plot_density(test_data, param = estimate, distr = &quot;gumbel&quot;)</code></pre>
+<pre><code>## Error in plot_density(test_data, param = estimate, distr = &quot;gumbel&quot;): could not find function &quot;dgumbel&quot;</code></pre>
+<p><img src="rd_files/figure-html/gumbel_Lmom_id_18-1.png" width="624" /></p>
+</div>
+<div id="gumbel_mle" class="section level2">
+<h2>gumbel_mle</h2>
+<a id="gumbel_mle_alias"></a>
+<h3>
+Fitting the Gumbel distribution with MLE
+</h3>
+<p class="rd-p">
+Function to fit the Gumbel distribution with the maximum likelihood method
+</p>
+<h4>
+Usage
+</h4>
+<pre class="r"><code><div>gumbel_mle(dat)</div></code></pre>
+<h4>
+Arguments
+</h4>
+<dl class="rd-dl">
+<dt>
+dat
+</dt>
+<dd class="rd-dd">
+the data that needs fitting (i.e. flood data)
+</dd>
+</dl>
+<h4>
+Value
+</h4>
+<p class="rd-p">
+<dl>
+param Estimated parameters (2) and standard error returned as a list($estimate, $se)
+</dl>
+</p>
+<h4>
+Examples
+</h4>
+<pre class="r"><code>library(FlomKart)
+estimate = gumbel_mle(test_data)
+plot_density(test_data, param = estimate, distr = &quot;gumbel&quot;)</code></pre>
+<pre><code>## Error in plot_density(test_data, param = estimate, distr = &quot;gumbel&quot;): could not find function &quot;dgumbel&quot;</code></pre>
+<p><img src="rd_files/figure-html/gumbel_mle_id_19-1.png" width="624" /></p>
+</div>
+<div id="gumbel_mom" class="section level2">
+<h2>gumbel_mom</h2>
+<a id="gumbel_mom_alias"></a>
+<h3>
+Fitting the Gumbel distribution with mom
+</h3>
+<p class="rd-p">
+Function to fit the Gumbel distribution with the ordinary moments method
+</p>
+<h4>
+Usage
+</h4>
+<pre class="r"><code><div>gumbel_mom(dat)</div></code></pre>
+<h4>
+Arguments
+</h4>
+<dl class="rd-dl">
+<dt>
+dat
+</dt>
+<dd class="rd-dd">
+the data that needs fitting (i.e. flood data)
+</dd>
+</dl>
+<h4>
+Value
+</h4>
+<p class="rd-p">
+<dl>
+param Estimated parameters (2) and standard error returned as a list($estimate, $se)
+</dl>
+</p>
+<h4>
+Examples
+</h4>
+<pre class="r"><code>library(FlomKart)
+estimate = gumbel_mom(test_data)
+plot_density(test_data, param = estimate, distr = &quot;gumbel&quot;)</code></pre>
+<pre><code>## Error in plot_density(test_data, param = estimate, distr = &quot;gumbel&quot;): could not find function &quot;dgumbel&quot;</code></pre>
+<p><img src="rd_files/figure-html/gumbel_mom_id_20-1.png" width="624" /></p>
+</div>
+<div id="pearson_bayes" class="section level2">
+<h2>pearson_bayes</h2>
+<a id="pearson_bayes_alias"></a>
+<h3>
+Fitting the pearson distribution with Bayesian inference
+</h3>
+<p class="rd-p">
+Function to fit the pearson distribution with BayesianMCMC method WE assume that the shape parameter only has a prior with mean zero and standard deviation 0.2 (dnorm(x[3], 0, 0.2))
+</p>
+<h4>
+Usage
+</h4>
+<pre class="r"><code><div>pearson_bayes(dat)</div></code></pre>
+<h4>
+Arguments
+</h4>
+<dl class="rd-dl">
+<dt>
+dat
+</dt>
+<dd class="rd-dd">
+the data that needs fitting (i.e. flood data)
+</dd>
+</dl>
+<h4>
+Value
+</h4>
+<p class="rd-p">
+<dl>
+param Estimated parameters and standard error returned as a list($estimate, $se)
+</dl>
+</p>
+<h4>
+Examples
+</h4>
+<pre class="r"><code>library(FlomKart)
+estimate = pearson_bayes(test_data)
+plot_density(test_data, param = estimate, distr = &quot;pearson&quot;)</code></pre>
+<pre><code>## Error in plot_density(test_data, param = estimate, distr = &quot;pearson&quot;): could not find function &quot;f.gamma&quot;</code></pre>
+<p><img src="rd_files/figure-html/pearson_bayes_id_21-1.png" width="624" /></p>
+</div>
+<div id="pearson_lmom" class="section level2">
+<h2>pearson_Lmom</h2>
+<a id="pearson_Lmom_alias"></a>
+<h3>
+Fitting the pearson distribution with Lmom
+</h3>
+<p class="rd-p">
+Function to fit the pearson distribution with the linear moment method
+</p>
+<h4>
+Usage
+</h4>
+<pre class="r"><code><div>pearson_Lmom(dat)</div></code></pre>
+<h4>
+Arguments
+</h4>
+<dl class="rd-dl">
+<dt>
+dat
+</dt>
+<dd class="rd-dd">
+the data that needs fitting (i.e. flood data)
+</dd>
+</dl>
+<h4>
+Value
+</h4>
+<p class="rd-p">
+<dl>
+param Estimated parameters and standard error returned as a list($estimate, $se). Standard error is not yet implemented
+</dl>
+</p>
+<h4>
+Examples
+</h4>
+<pre class="r"><code>library(FlomKart)
+estimate = pearson_Lmom(test_data)
+plot_density(test_data, param = estimate, distr = &quot;pearson&quot;)</code></pre>
+<pre><code>## Error in plot_density(test_data, param = estimate, distr = &quot;pearson&quot;): could not find function &quot;f.gamma&quot;</code></pre>
+<p><img src="rd_files/figure-html/pearson_Lmom_id_22-1.png" width="624" /></p>
+</div>
+<div id="pearson_mle" class="section level2">
+<h2>pearson_mle</h2>
+<a id="pearson_mle_alias"></a>
+<h3>
+Fitting the pearson distribution with MLE
+</h3>
+<p class="rd-p">
+Function to fit the pearson distribution with the maximum likelihood method
+</p>
+<h4>
+Usage
+</h4>
+<pre class="r"><code><div>pearson_mle(dat)</div></code></pre>
+<h4>
+Arguments
+</h4>
+<dl class="rd-dl">
+<dt>
+dat
+</dt>
+<dd class="rd-dd">
+the data that needs fitting (i.e. flood data)
+</dd>
+</dl>
+<h4>
+Value
+</h4>
+<p class="rd-p">
+<dl>
+param Estimated parameters and standard error returned as a list($estimate, $se)
+</dl>
+</p>
+<h4>
+Examples
+</h4>
+<pre class="r"><code>library(FlomKart)
+estimate = pearson_mle(test_data)
+plot_density(test_data, param = estimate, distr = &quot;pearson&quot;)</code></pre>
+<pre><code>## Error in plot_density(test_data, param = estimate, distr = &quot;pearson&quot;): could not find function &quot;f.gamma&quot;</code></pre>
+<p><img src="rd_files/figure-html/pearson_mle_id_23-1.png" width="624" /></p>
+</div>
+<div id="pearson_mom" class="section level2">
+<h2>pearson_mom</h2>
+<a id="pearson_mom_alias"></a>
+<h3>
+Fitting the pearson distribution with mom
+</h3>
+<p class="rd-p">
+Function to fit the pearson distribution with the ordinary moments method
+</p>
+<h4>
+Usage
+</h4>
+<pre class="r"><code><div>pearson_mom(dat)</div></code></pre>
+<h4>
+Arguments
+</h4>
+<dl class="rd-dl">
+<dt>
+dat
+</dt>
+<dd class="rd-dd">
+the data that needs fitting (i.e. flood data)
+</dd>
+</dl>
+<h4>
+Value
+</h4>
+<p class="rd-p">
+<dl>
+param Estimated parameters and standard error returned as a list($estimate, $se) Standard error is not yet implemented
+</dl>
+</p>
+<h4>
+Examples
+</h4>
+<pre class="r"><code>library(FlomKart)
+estimate = pearson_mom(test_data)
+plot_density(test_data, param = estimate, distr = &quot;pearson&quot;)</code></pre>
+<pre><code>## Error in plot_density(test_data, param = estimate, distr = &quot;pearson&quot;): could not find function &quot;f.gamma&quot;</code></pre>
+<p><img src="rd_files/figure-html/pearson_mom_id_24-1.png" width="624" /></p>
+</div>
+</div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <div id="footer">
+    <div class="container">
+      <div class="col-md-6">
+              </div>
+      <div class="col-md-6">
+        <p class="pull-right">created with <a href="https://github.com/hafen/packagedocs">packagedocs</a>
+                  </p>
+      </div>
+    </div>
+  </div>
+
+  
+</body>
+</html>

@@ -8,7 +8,9 @@
 #' @importFrom MASS fitdistr
 #' @export
 #'
-#' @examples gamma_mle(test_data)
+#' @examples library(FlomKart)
+#' estimate = gamma_mle(test_data)
+#' plot_density(test_data, param = estimate, distr = "gamma")
 gamma_mle <- function(dat) {
 # Fit GAMMA distribution with Maximum Likelihood Estimator
 # Returns param as a list($estimate, $se)
@@ -41,7 +43,9 @@ gamma_mle <- function(dat) {
 #' @importFrom fitdistrplus mmedist
 #' @export
 #'
-#' @examples gamma_Lmom(test_data)
+#' @examples library(FlomKart)
+#' estimate = gamma_Lmom(test_data)
+#' plot_density(test_data, param = estimate, distr = "gamma")
 gamma_Lmom <- function(dat) {
 # Fit GAMMA distribution with Lmoment estimator
 # Returns param as a list($estimate, $se)
@@ -75,7 +79,9 @@ gamma_Lmom <- function(dat) {
 #' @return param Estimated parameters (2) and standard error returned as a list($estimate, $se)
 #' @export
 #'
-#' @examples gamma_mom(test_data)
+#' @examples library(FlomKart)
+#' estimate = gamma_mom(test_data)
+#' plot_density(test_data, param = estimate, distr = "gamma")
 gamma_mom <- function(dat) {
 # Fit GAMMA distribution with ordinary moment estimator
 # Returns param as a list($estimate, $se)

@@ -17,6 +17,8 @@ Standard error is not yet implemented
 Function to fit the pearson distribution with the ordinary moments method
 }
 \examples{
-pearson_mom(test_data)
+library(FlomKart)
+estimate = pearson_mom(test_data)
+plot_density(test_data, param = estimate, distr = "pearson")
 }
 

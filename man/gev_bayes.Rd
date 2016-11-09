@@ -17,6 +17,8 @@ Function to fit the GEV distribution with BayesianMCMC method
 WE assume that the shape parameter only has a prior with mean zero and standard deviation 0.2 (dnorm(x[3], 0, 0.2))
 }
 \examples{
-gev_bayes(test_data)
+library(FlomKart)
+estimate = gev_bayes(test_data)
+plot_density(test_data, param = estimate, distr = "gev")
 }
 

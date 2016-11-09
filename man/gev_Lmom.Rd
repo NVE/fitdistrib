@@ -17,7 +17,9 @@ Standard error is not yet implemented
 Function to fit the GEV distribution with the linear moment method
 }
 \examples{
-gev_Lmom(test_data)
+library(FlomKart)
+estimate = gev_Lmom(test_data)
+plot_density(test_data, param = estimate, distr = "gev")
 }
 \seealso{
 \link{gev_mle}, \link{gev_mom}

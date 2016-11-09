@@ -1,0 +1,21 @@
+---
+title: "fitdistrib Documentation"
+subtitle: "Fitting probability distributions"
+author: ""
+copyright: ""
+output:
+  packagedocs::package_docs_rd:
+    toc: true
+    toc_collapse: false
+redirect: http://NVE.github.io/fitdistrib/rd.html
+vignette: |
+  %\VignetteIndexEntry{fitdistrib Package Reference}
+  %\VignetteEngine{packagedocs::redirect}
+navpills: |
+  <li><a href='index.html'>Docs</a></li>
+  <li class="active"><a href='rd.html'>Package Ref</a></li>
+  <li><a href='https://github.com/NVE/fitdistrib'>Github <i class='fa fa-github'></i></a></li>
+---
+
+```{r auto-gen-child, child="auto-generated-rd2.Rmd"}
+```

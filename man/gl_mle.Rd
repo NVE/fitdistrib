@@ -21,6 +21,8 @@ Function to fit the GL distribution with the maximum likelihood method.
 This function was copied from Kolbjorn's initial file
 }
 \examples{
-gl_mle(test_data)
+library(FlomKart)
+estimate = gl_mle(test_data)
+plot_density(test_data, param = estimate, distr = "gl")
 }
 

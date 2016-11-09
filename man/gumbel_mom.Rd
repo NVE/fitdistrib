@@ -16,6 +16,8 @@ param Estimated parameters (2) and standard error returned as a list($estimate, 
 Function to fit the Gumbel distribution with the ordinary moments method
 }
 \examples{
-gumbel_mom(test_data)
+library(FlomKart)
+estimate = gumbel_mom(test_data)
+plot_density(test_data, param = estimate, distr = "gumbel")
 }
 

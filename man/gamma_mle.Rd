@@ -16,6 +16,8 @@ param Estimated parameters (2) and standard error returned as a list($estimate, 
 Function to fit the gamma distribution with the maximum likelihood method
 }
 \examples{
-gamma_mle(test_data)
+library(FlomKart)
+estimate = gamma_mle(test_data)
+plot_density(test_data, param = estimate, distr = "gamma")
 }
 

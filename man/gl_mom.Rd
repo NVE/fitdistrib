@@ -17,6 +17,8 @@ Standard error is not yet implemented
 Function to fit the Generalized Logistics distribution with the ordinary moments method
 }
 \examples{
-gl_mom(test_data)
+library(FlomKart)
+estimate = gl_mom(test_data)
+plot_density(test_data, param = estimate, distr = "gl")
 }
 

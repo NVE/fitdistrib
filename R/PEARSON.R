@@ -8,7 +8,9 @@
 #' @importFrom nsRFA ML_estimation
 #' @export
 #'
-#' @examples pearson_mle(test_data)
+#' @examples library(FlomKart)
+#' estimate = pearson_mle(test_data)
+#' plot_density(test_data, param = estimate, distr = "pearson")
 pearson_mle <- function(dat) {
 # Fit PEARSON III distribution with Maximum Likelihood Estimator (nsRFA package)
 # Returns param as a list($estimate, $se)
@@ -46,7 +48,9 @@ pearson_mle <- function(dat) {
 #' @importFrom nsRFA par.gamma
 #' @export
 #'
-#' @examples pearson_Lmom(test_data)
+#' @examples library(FlomKart)
+#' estimate = pearson_Lmom(test_data)
+#' plot_density(test_data, param = estimate, distr = "pearson")
 pearson_Lmom <- function(dat) {
 # Fit PEARSON III distribution with the Lmoments
 # Returns param as a list($estimate, $se)
@@ -84,7 +88,9 @@ pearson_Lmom <- function(dat) {
 #' @importFrom nsRFA moment_estimation
 #' @export
 #'
-#' @examples pearson_mom(test_data)
+#' @examples library(FlomKart)
+#' estimate = pearson_mom(test_data)
+#' plot_density(test_data, param = estimate, distr = "pearson")
 pearson_mom <- function(dat) {
   # Fit PEARSON III distribution with method of moments (nsRFA package)
   # Returns param as a list($estimate, $se)
@@ -119,7 +125,9 @@ pearson_mom <- function(dat) {
 #' @return param Estimated parameters and standard error returned as a list($estimate, $se)
 #' @export
 #'
-#' @examples pearson_bayes(test_data)
+#' @examples library(FlomKart)
+#' estimate = pearson_bayes(test_data)
+#' plot_density(test_data, param = estimate, distr = "pearson")
 pearson_bayes <- function(dat) {
 # Fit PEARSON distribution with the Bayesian method
 

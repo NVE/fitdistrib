@@ -17,6 +17,8 @@ Standard error is not yet implemented
 Function to fit the pearson distribution with the linear moment method
 }
 \examples{
-pearson_Lmom(test_data)
+library(FlomKart)
+estimate = pearson_Lmom(test_data)
+plot_density(test_data, param = estimate, distr = "pearson")
 }
 

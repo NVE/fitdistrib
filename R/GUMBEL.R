@@ -9,7 +9,9 @@
 #' @importFrom ismev gum.fit
 #' @export
 #'
-#' @examples gumbel_mle(test_data)
+#' @examples library(FlomKart)
+#' estimate = gumbel_mle(test_data)
+#' plot_density(test_data, param = estimate, distr = "gumbel")
 gumbel_mle <- function(dat) {
 
   param <- list(estimate = c(NA, NA), se = c(NA, NA))
@@ -34,7 +36,9 @@ gumbel_mle <- function(dat) {
 #' @importFrom nsRFA par.gumb
 #' @export
 #'
-#' @examples gumbel_Lmom(test_data)
+#' @examples library(FlomKart)
+#' estimate = gumbel_Lmom(test_data)
+#' plot_density(test_data, param = estimate, distr = "gumbel")
 gumbel_Lmom <- function(dat) {
 
   param <- list(estimate = c(NA, NA), se = c(NA, NA))
@@ -56,7 +60,9 @@ gumbel_Lmom <- function(dat) {
 #' @importFrom nsRFA moments
 #' @export
 #'
-#' @examples gumbel_mom(test_data)
+#' @examples library(FlomKart)
+#' estimate = gumbel_mom(test_data)
+#' plot_density(test_data, param = estimate, distr = "gumbel")
 gumbel_mom <- function(dat) {
 
   param <- list(estimate = c(NA, NA), se = c(NA, NA))
@@ -82,7 +88,9 @@ gumbel_mom <- function(dat) {
 #' @importFrom nsRFA BayesianMCMC
 #' @export
 #'
-#' @examples gumbel_bayes(test_data)
+#' @examples library(FlomKart)
+#' estimate = gumbel_bayes(test_data)
+#' plot_density(test_data, param = estimate, distr = "gumbel")
 gumbel_bayes <- function(dat) {
 
   param <- list(estimate = c(NA, NA), se = c(NA, NA))

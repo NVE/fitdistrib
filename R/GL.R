@@ -28,7 +28,9 @@
 #' @importFrom stats optim
 #' @export
 #'
-#' @examples gl_mle(test_data)
+#' @examples library(FlomKart)
+#' estimate = gl_mle(test_data)
+#' plot_density(test_data, param = estimate, distr = "gl")
 gl_mle <- function (xdat, ydat = NULL, mul = NULL, sigl = NULL, shl = NULL,
                     mulink = identity, siglink = identity, shlink = identity,
                     muinit = NULL, siginit = NULL, shinit = NULL, show = TRUE,
@@ -158,7 +160,9 @@ gl_mle <- function (xdat, ydat = NULL, mul = NULL, sigl = NULL, shl = NULL,
 #' @return param Estimated parameters and standard error returned as a list($estimate, $se)
 #' @export
 #'
-#' @examples gl_Lmom(test_data)
+#' @examples library(FlomKart)
+#' estimate = gl_Lmom(test_data)
+#' plot_density(test_data, param = estimate, distr = "gl")
 gl_Lmom <- function(dat) {
 
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))
@@ -185,7 +189,9 @@ gl_Lmom <- function(dat) {
 #' @importFrom pracma newtonRaphson
 #' @export
 #'
-#' @examples gl_mom(test_data)
+#' @examples library(FlomKart)
+#' estimate = gl_mom(test_data)
+#' plot_density(test_data, param = estimate, distr = "gl")
 gl_mom <- function(dat) {
 
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))  # HACK FLO
@@ -242,7 +248,9 @@ gl_mom <- function(dat) {
 #' @importFrom stats sd
 #' @export
 #'
-#' @examples gl_bayes(test_data)
+#' @examples library(FlomKart)
+#' estimate = gl_bayes(test_data)
+#' plot_density(test_data, param = estimate, distr = "gl")
 gl_bayes <- function(dat) {
 # Fit GL distribution with the Bayesian method
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))

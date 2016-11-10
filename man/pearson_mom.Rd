@@ -17,8 +17,8 @@ Standard error is not yet implemented
 Function to fit the pearson distribution with the ordinary moments method
 }
 \examples{
-library(FlomKart)
+library(FlomKartShinyApp)
 estimate = pearson_mom(test_data)
-plot_density(test_data, param = estimate, distr = "pearson")
+FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 5)
 }
 

@@ -17,8 +17,8 @@ Function to fit the Gumbel distribution with BayesianMCMC method
 We do not provide a prior for the BayesianMCMC function
 }
 \examples{
-library(FlomKart)
+library(FlomKartShinyApp)
 estimate = gumbel_bayes(test_data)
-plot_density(test_data, param = estimate, distr = "gumbel")
+FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 1)
 }
 

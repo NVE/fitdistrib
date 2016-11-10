@@ -17,8 +17,8 @@ Function to fit the Generalized Logistics distribution with BayesianMCMC method
 We assume that the shape parameter only has a prior with mean zero and standard deviation 0.2 (dnorm(x[3], 0, 0.2))
 }
 \examples{
-library(FlomKart)
+library(FlomKartShinyApp)
 estimate = gl_bayes(test_data)
-plot_density(test_data, param = estimate, distr = "gl")
+FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 4)
 }
 

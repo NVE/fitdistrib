@@ -16,8 +16,8 @@ param Estimated parameters (2) and standard error returned as a list($estimate, 
 Function to fit the Gumbel distribution with the linear moment method
 }
 \examples{
-library(FlomKart)
+library(FlomKartShinyApp)
 estimate = gumbel_Lmom(test_data)
-plot_density(test_data, param = estimate, distr = "gumbel")
+FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 1)
 }
 

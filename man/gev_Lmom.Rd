@@ -17,9 +17,9 @@ Standard error is not yet implemented
 Function to fit the GEV distribution with the linear moment method
 }
 \examples{
-library(FlomKart)
+library(FlomKartShinyApp)
 estimate = gev_Lmom(test_data)
-plot_density(test_data, param = estimate, distr = "gev")
+FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 3)
 }
 \seealso{
 \link{gev_mle}, \link{gev_mom}

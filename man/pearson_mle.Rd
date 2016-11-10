@@ -16,8 +16,8 @@ param Estimated parameters and standard error returned as a list($estimate, $se)
 Function to fit the pearson distribution with the maximum likelihood method
 }
 \examples{
-library(FlomKart)
+library(FlomKartShinyApp)
 estimate = pearson_mle(test_data)
-plot_density(test_data, param = estimate, distr = "pearson")
+FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 5)
 }
 

@@ -10,9 +10,9 @@
 #' @importFrom evd fgev
 #' @export
 #'
-#' @examples library(FlomKart)
+#' @examples library(FlomKartShinyApp)
 #' estimate = gev_mle(test_data)
-#' plot_density(test_data, param = estimate, distr = "gev")
+#' FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 3)
 gev_mle <- function(dat) {
 
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))
@@ -47,9 +47,9 @@ gev_mle <- function(dat) {
 #' @importFrom nsRFA par.GEV
 #' @export
 #'
-#' @examples library(FlomKart)
+#' @examples library(FlomKartShinyApp)
 #' estimate = gev_Lmom(test_data)
-#' plot_density(test_data, param = estimate, distr = "gev")
+#' FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 3)
 gev_Lmom <- function(dat) {
 
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))
@@ -86,9 +86,9 @@ gev_Lmom <- function(dat) {
 #' Standard error is not yet implemented
 #' @export
 #'
-#' @examples library(FlomKart)
+#' @examples library(FlomKartShinyApp)
 #' estimate = gev_mom(test_data)
-#' plot_density(test_data, param = estimate, distr = "gev")
+#' FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 3)
 gev_mom <- function(dat) {
 
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))
@@ -147,9 +147,9 @@ gev_mom <- function(dat) {
 #' @return param Estimated parameters and standard error returned as a list($estimate, $se)
 #' @export
 #'
-#' @examples library(FlomKart)
+#' @examples library(FlomKartShinyApp)
 #' estimate = gev_bayes(test_data)
-#' plot_density(test_data, param = estimate, distr = "gev")
+#' FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 3)
 gev_bayes <- function(dat) {
 
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))

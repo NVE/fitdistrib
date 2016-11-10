@@ -16,8 +16,8 @@ param Estimated parameters and standard error returned as a list($estimate, $se)
 Function to fit the Generalized Logistics distribution with the linear moments method
 }
 \examples{
-library(FlomKart)
+library(FlomKartShinyApp)
 estimate = gl_Lmom(test_data)
-plot_density(test_data, param = estimate, distr = "gl")
+FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 4)
 }
 

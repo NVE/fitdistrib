@@ -8,9 +8,9 @@
 #' @importFrom MASS fitdistr
 #' @export
 #'
-#' @examples library(FlomKart)
+#' @examples library(FlomKartShinyApp)
 #' estimate = gamma_mle(test_data)
-#' plot_density(test_data, param = estimate, distr = "gamma")
+#' FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 2)
 gamma_mle <- function(dat) {
 # Fit GAMMA distribution with Maximum Likelihood Estimator
 # Returns param as a list($estimate, $se)
@@ -43,9 +43,9 @@ gamma_mle <- function(dat) {
 #' @importFrom fitdistrplus mmedist
 #' @export
 #'
-#' @examples library(FlomKart)
+#' @examples library(FlomKartShinyApp)
 #' estimate = gamma_Lmom(test_data)
-#' plot_density(test_data, param = estimate, distr = "gamma")
+#' FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 2)
 gamma_Lmom <- function(dat) {
 # Fit GAMMA distribution with Lmoment estimator
 # Returns param as a list($estimate, $se)
@@ -79,9 +79,9 @@ gamma_Lmom <- function(dat) {
 #' @return param Estimated parameters (2) and standard error returned as a list($estimate, $se)
 #' @export
 #'
-#' @examples library(FlomKart)
+#' @examples library(FlomKartShinyApp)
 #' estimate = gamma_mom(test_data)
-#' plot_density(test_data, param = estimate, distr = "gamma")
+#' FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 2)
 gamma_mom <- function(dat) {
 # Fit GAMMA distribution with ordinary moment estimator
 # Returns param as a list($estimate, $se)

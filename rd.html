@@ -6,7 +6,7 @@
 
   
   
-  <title>fitdistrib Documentation</title>
+  <title>fitdistrib</title>
 
     <script src="rd_files/jquery-1.11.3/jquery.min.js"></script>
   <link href="rd_files/bootstrap-3.3.2/css/bootstrap.min.css" rel="stylesheet" />
@@ -45,7 +45,7 @@
           <span class="icon-bar"></span>
         </button>
                 <a href="index.html" class="navbar-brand page-scroll">
-        fitdistrib Documentation - Fitting probability distributions
+        fitdistrib - Fitting probability distributions
         </a>
       </div>
             <nav class="collapse navbar-collapse" role="navigation">
@@ -629,7 +629,7 @@ Examples
 <pre class="r"><code>library(FlomKart)
 estimate = gl_bayes(test_data)
 plot_density(test_data, param = estimate, distr = &quot;gl&quot;)</code></pre>
-<pre><code>## Error in plot_density(test_data, param = estimate, distr = &quot;gl&quot;): could not find function &quot;f.genlogis&quot;</code></pre>
+<pre><code>## Warning in log(1 - k * (x - xi)/alfa): NaNs produced</code></pre>
 <p><img src="rd_files/figure-html/gl_bayes_id_13-1.png" width="624" /></p>
 </div>
 <div id="gl_lmom" class="section level2">
@@ -670,7 +670,7 @@ Examples
 <pre class="r"><code>library(FlomKart)
 estimate = gl_Lmom(test_data)
 plot_density(test_data, param = estimate, distr = &quot;gl&quot;)</code></pre>
-<pre><code>## Error in plot_density(test_data, param = estimate, distr = &quot;gl&quot;): could not find function &quot;f.genlogis&quot;</code></pre>
+<pre><code>## Warning in log(1 - k * (x - xi)/alfa): NaNs produced</code></pre>
 <p><img src="rd_files/figure-html/gl_Lmom_id_14-1.png" width="624" /></p>
 </div>
 <div id="gl_mle" class="section level2">
@@ -711,7 +711,7 @@ Examples
 <pre class="r"><code>library(FlomKart)
 estimate = gl_mle(test_data)
 plot_density(test_data, param = estimate, distr = &quot;gl&quot;)</code></pre>
-<pre><code>## Error in plot_density(test_data, param = estimate, distr = &quot;gl&quot;): could not find function &quot;f.genlogis&quot;</code></pre>
+<pre><code>## Warning in log(1 - k * (x - xi)/alfa): NaNs produced</code></pre>
 <p><img src="rd_files/figure-html/gl_mle_id_15-1.png" width="624" /></p>
 </div>
 <div id="gl_mom" class="section level2">
@@ -752,7 +752,6 @@ Examples
 <pre class="r"><code>library(FlomKart)
 estimate = gl_mom(test_data)
 plot_density(test_data, param = estimate, distr = &quot;gl&quot;)</code></pre>
-<pre><code>## Error in plot_density(test_data, param = estimate, distr = &quot;gl&quot;): could not find function &quot;f.genlogis&quot;</code></pre>
 <p><img src="rd_files/figure-html/gl_mom_id_16-1.png" width="624" /></p>
 </div>
 <div id="gumbel_bayes" class="section level2">
@@ -793,7 +792,6 @@ Examples
 <pre class="r"><code>library(FlomKart)
 estimate = gumbel_bayes(test_data)
 plot_density(test_data, param = estimate, distr = &quot;gumbel&quot;)</code></pre>
-<pre><code>## Error in plot_density(test_data, param = estimate, distr = &quot;gumbel&quot;): could not find function &quot;dgumbel&quot;</code></pre>
 <p><img src="rd_files/figure-html/gumbel_bayes_id_17-1.png" width="624" /></p>
 </div>
 <div id="gumbel_lmom" class="section level2">
@@ -834,7 +832,6 @@ Examples
 <pre class="r"><code>library(FlomKart)
 estimate = gumbel_Lmom(test_data)
 plot_density(test_data, param = estimate, distr = &quot;gumbel&quot;)</code></pre>
-<pre><code>## Error in plot_density(test_data, param = estimate, distr = &quot;gumbel&quot;): could not find function &quot;dgumbel&quot;</code></pre>
 <p><img src="rd_files/figure-html/gumbel_Lmom_id_18-1.png" width="624" /></p>
 </div>
 <div id="gumbel_mle" class="section level2">
@@ -875,7 +872,6 @@ Examples
 <pre class="r"><code>library(FlomKart)
 estimate = gumbel_mle(test_data)
 plot_density(test_data, param = estimate, distr = &quot;gumbel&quot;)</code></pre>
-<pre><code>## Error in plot_density(test_data, param = estimate, distr = &quot;gumbel&quot;): could not find function &quot;dgumbel&quot;</code></pre>
 <p><img src="rd_files/figure-html/gumbel_mle_id_19-1.png" width="624" /></p>
 </div>
 <div id="gumbel_mom" class="section level2">
@@ -916,7 +912,6 @@ Examples
 <pre class="r"><code>library(FlomKart)
 estimate = gumbel_mom(test_data)
 plot_density(test_data, param = estimate, distr = &quot;gumbel&quot;)</code></pre>
-<pre><code>## Error in plot_density(test_data, param = estimate, distr = &quot;gumbel&quot;): could not find function &quot;dgumbel&quot;</code></pre>
 <p><img src="rd_files/figure-html/gumbel_mom_id_20-1.png" width="624" /></p>
 </div>
 <div id="pearson_bayes" class="section level2">
@@ -957,7 +952,6 @@ Examples
 <pre class="r"><code>library(FlomKart)
 estimate = pearson_bayes(test_data)
 plot_density(test_data, param = estimate, distr = &quot;pearson&quot;)</code></pre>
-<pre><code>## Error in plot_density(test_data, param = estimate, distr = &quot;pearson&quot;): could not find function &quot;f.gamma&quot;</code></pre>
 <p><img src="rd_files/figure-html/pearson_bayes_id_21-1.png" width="624" /></p>
 </div>
 <div id="pearson_lmom" class="section level2">
@@ -998,7 +992,6 @@ Examples
 <pre class="r"><code>library(FlomKart)
 estimate = pearson_Lmom(test_data)
 plot_density(test_data, param = estimate, distr = &quot;pearson&quot;)</code></pre>
-<pre><code>## Error in plot_density(test_data, param = estimate, distr = &quot;pearson&quot;): could not find function &quot;f.gamma&quot;</code></pre>
 <p><img src="rd_files/figure-html/pearson_Lmom_id_22-1.png" width="624" /></p>
 </div>
 <div id="pearson_mle" class="section level2">
@@ -1039,7 +1032,6 @@ Examples
 <pre class="r"><code>library(FlomKart)
 estimate = pearson_mle(test_data)
 plot_density(test_data, param = estimate, distr = &quot;pearson&quot;)</code></pre>
-<pre><code>## Error in plot_density(test_data, param = estimate, distr = &quot;pearson&quot;): could not find function &quot;f.gamma&quot;</code></pre>
 <p><img src="rd_files/figure-html/pearson_mle_id_23-1.png" width="624" /></p>
 </div>
 <div id="pearson_mom" class="section level2">
@@ -1080,7 +1072,6 @@ Examples
 <pre class="r"><code>library(FlomKart)
 estimate = pearson_mom(test_data)
 plot_density(test_data, param = estimate, distr = &quot;pearson&quot;)</code></pre>
-<pre><code>## Error in plot_density(test_data, param = estimate, distr = &quot;pearson&quot;): could not find function &quot;f.gamma&quot;</code></pre>
 <p><img src="rd_files/figure-html/pearson_mom_id_24-1.png" width="624" /></p>
 </div>
 </div>

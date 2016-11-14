@@ -5,7 +5,7 @@
 param <- c(7.6, 0.3)  # Approximate parameters taken from the fit of the Narsjo "2.11" station data
 CI <- 2  # +-2 times the Std_error to get 95% confidence interval
 
-random_distrib <- rgamma(1000, shape=param[1], scale=param[2])
+random_distrib <- rgamma(1000, shape=param[1], rate=param[2])
 
 ####
 test <- gamma_mle(random_distrib)

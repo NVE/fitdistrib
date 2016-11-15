@@ -33,10 +33,10 @@
 #' FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 4)
 gl_mle <- function (xdat, ydat = NULL, mul = NULL, sigl = NULL, shl = NULL,
                     mulink = identity, siglink = identity, shlink = identity,
-                    muinit = NULL, siginit = NULL, shinit = NULL, show = TRUE,
+                    muinit = NULL, siginit = NULL, shinit = NULL, show = FALSE,
                     method = "Nelder-Mead", maxit = 10000, ...) {
 
-  show="FALSE"  # HACK FLO. Let's make sure we dont print anything
+#  show="FALSE"  # HACK FLO. Let's make sure we dont print anything
   z <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))  # HACK FLO
 
   if (length(xdat) >= 1) {
@@ -49,7 +49,7 @@ gl_mle <- function (xdat, ydat = NULL, mul = NULL, sigl = NULL, shl = NULL,
     par.init<-par.genlogis(dat.Lmom[1],dat.Lmom[2], dat.Lmom[4])
     in2 <- par.init[2]
     in1 <- par.init[1]
-
+    in3 <- par.init[3]
     if (is.null(mul)) {
       mumat <- as.matrix(rep(1, length(xdat)))
 
@@ -78,27 +78,33 @@ gl_mle <- function (xdat, ydat = NULL, mul = NULL, sigl = NULL, shl = NULL,
       shmat <- as.matrix(rep(1, length(xdat)))
 
       if (is.null(shinit))
-        shinit <- 0.1
+        shinit <- in3
     } else {
       z$trans <- TRUE
       shmat <- cbind(rep(1, length(xdat)), ydat[, shl])
 
       if (is.null(shinit))
-        shinit <- c(0.1, rep(0, length(shl)))
+        shinit <- c(in3, rep(0, length(shl)))
     }
 
     z$model <- list(mul, sigl, shl)
     z$link <- deparse(substitute(c(mulink, siglink, shlink)))
     init <- c(muinit, siginit, shinit)
     gl.lik <- function(a) {
+	  options(warn=-1)
       mu <- mulink(mumat %*% (a[1:npmu]))
       sc <- siglink(sigmat %*% (a[seq(npmu + 1, length = npsc)]))
       xi <- shlink(shmat %*% (a[seq(npmu + npsc + 1, length = npsh)]))
+  
       y <- (xdat - mu) / sc
-      y <- 1 - xi * y
-      if (any(y <= 0) || any(sc <= 0))
+	  y2 <- -xi^(-1) * log(1 - xi*y)
+      y[xi<= -0.0000001 | xi >= 0.0000001] <- y2[xi<= -0.0000001 | xi >= 0.0000001]
+#	  print(y)
+#	  print(sc)
+	  options(warn=0)
+      if (any(is.na(y)) || any(sc <= 0))
         return(10^6)
-      sum(log(sc)) - sum(log(y^((1/xi)-1)))+2*sum(log((1+y^(1/xi))))
+      sum(log(sc)) +sum((1-xi)*y)+2*sum(log((1+exp(-y))))
     }
 
     #   x <- optim(init, gl.lik, hessian = TRUE, method = method,  # Original code commented by FKB
@@ -129,10 +135,10 @@ gl_mle <- function (xdat, ydat = NULL, mul = NULL, sigl = NULL, shl = NULL,
 
 
       # z$cov <- solve(x$hessian)  # initially this way
-      # z$cov <- tryCatch(solve(x$hessian), finally = "Warning: could not solve Hessian")  # Protection FLO
+       z$cov <- tryCatch(solve(x$hessian), finally = "Warning: could not solve Hessian")  # Protection FLO
       # z$cov <- try(solve(x$hessian))  # TO FIX!!!!!!!!!!!!!!!!
       # z$se <- sqrt(diag(z$cov))  # initially this way
-      # z$se <- try(sqrt(diag(z$cov)))  # TO FIX!!!!!!!!!!!!!!!!
+       z$se <- try(sqrt(diag(z$cov)))  # TO FIX!!!!!!!!!!!!!!!!
 
 
       z$vals <- cbind(mu, sc, xi)
@@ -153,6 +159,7 @@ gl_mle <- function (xdat, ydat = NULL, mul = NULL, sigl = NULL, shl = NULL,
     invisible(param)
   }
 }
+
 
 #' Fitting the GL distribution with Lmom
 #' @description Function to fit the Generalized Logistics distribution with the linear moments method

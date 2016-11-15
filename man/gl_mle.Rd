@@ -6,7 +6,7 @@
 \usage{
 gl_mle(xdat, ydat = NULL, mul = NULL, sigl = NULL, shl = NULL,
   mulink = identity, siglink = identity, shlink = identity,
-  muinit = NULL, siginit = NULL, shinit = NULL, show = TRUE,
+  muinit = NULL, siginit = NULL, shinit = NULL, show = FALSE,
   method = "Nelder-Mead", maxit = 10000, ...)
 }
 \arguments{

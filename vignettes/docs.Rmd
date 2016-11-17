@@ -28,10 +28,22 @@ rdl <- function(x) packagedocs::rd_link(deparse(substitute(x)))
 # What is the fitdistrib package? 
 
 This package is a set a functions developed with the FlomKart flood frequency analysis project at NVE.
-It allows estimated probability distribution parameters for the following distributions and estimation methods:
+It allows estimating probability distribution parameters for the following distributions:
 
+- GEV: Generalized Extreme Value
+- GL: Generalized Logistics
+- PEARSON: Three parameter Pearson distribution
+- GAMMA distribution
+- GUMBEL distribution
 
-Those results of this package are used in the `FlomKart`package ([doc](http://NVE.github.io/FlomKart) and [code](http://github.com/NVE/FlomKart)) to build 2 NetCDF files which can then be explored with the NASA's NetCDF viewer [Panoply](http://www.giss.nasa.gov/tools/panoply/) or by our dedicated FlomKart shiny app ([doc](http://NVE.github.io/FlomKart_ShinyApp) and [code](http://github.com/NVE/FlomKart_ShinyApp)).
+Four different estimation methods are available:
+
+- MOM: method of moments
+- Lmom: linear moments
+- MLE: Maximum Likelyhood Estimation
+- Bayes: Bayesian inference
+
+The results of this package are used in the `FlomKart`package ([documentation](http://NVE.github.io/FlomKart) and [code](http://github.com/NVE/FlomKart)) to build 2 NetCDF files which can then be explored with the NASA's NetCDF viewer *[Panoply]*(http://www.giss.nasa.gov/tools/panoply/) or by our dedicated FlomKart shiny app ([documentation](http://NVE.github.io/FlomKart_ShinyApp) and [code](http://github.com/NVE/FlomKart_ShinyApp)).
 
 # How was it coded?
 

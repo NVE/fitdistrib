@@ -25,24 +25,15 @@ knitr::opts_chunk$set(comment = NA)
 rdl <- function(x) packagedocs::rd_link(deparse(substitute(x)))
 ```
 
-# Header 1
+# What is the fitdistrib package? 
 
-Welcome to the fitdistrib Documentation documentation page.
+This package is a set a functions developed with the FlomKart flood frequency analysis project at NVE.
+It allows estimated probability distribution parameters for the following distributions and estimation methods:
 
-# Example
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Those results of this package are used in the `FlomKart`package ([doc](http://NVE.github.io/FlomKart) and [code](http://github.com/NVE/FlomKart)) to build 2 NetCDF files which can then be explored with the NASA's NetCDF viewer [Panoply](http://www.giss.nasa.gov/tools/panoply/) or by our dedicated FlomKart shiny app ([doc](http://NVE.github.io/FlomKart_ShinyApp) and [code](http://github.com/NVE/FlomKart_ShinyApp)).
 
-You can embed an R code chunk like this:
+# How was it coded?
 
-```{r}
-summary(cars)
-```
-
-You can also embed plots, for example:
-
-```{r, echo=FALSE}
-plot(cars)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+In [Package Ref](http://NVE.github.io/fitdistrib/rd.html), you'll find the documentation of all the packaged functions.
+This package uses the existing R packages `nsRFA`, `evd`, `ismev`, `fitdistrplus` and `stats`. The use of functions from those packages is adapted to our context. Some new fitting functions were also implemented when not already available. 

@@ -16,6 +16,7 @@ env:
 
 before_script:
   # install the pkg so it can be used as a vig builder (only necessary for packagedocs)
+  - Rscript -e "devtools::document()"
   - Rscript -e "devtools::install()"
   - Rscript -e "packagedocs::build_vignettes()"
   - chmod +x ./_deploy.sh

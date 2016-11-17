@@ -202,9 +202,9 @@ param Estimated parameters (2) and standard error returned as a list($estimate, 
 <h4>
 Examples
 </h4>
-<pre class="r"><code>library(FlomKart)
+<pre class="r"><code>library(FlomKartShinyApp)
 estimate = gamma_Lmom(test_data)
-plot_density(test_data, param = estimate, distr = &quot;gamma&quot;)</code></pre>
+FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 2)</code></pre>
 <p><img src="rd_files/figure-html/gamma_Lmom_id_2-1.png" width="624" /></p>
 </div>
 <div id="gamma_mle" class="section level2">
@@ -242,9 +242,9 @@ param Estimated parameters (2) and standard error returned as a list($estimate, 
 <h4>
 Examples
 </h4>
-<pre class="r"><code>library(FlomKart)
+<pre class="r"><code>library(FlomKartShinyApp)
 estimate = gamma_mle(test_data)
-plot_density(test_data, param = estimate, distr = &quot;gamma&quot;)</code></pre>
+FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 2)</code></pre>
 <p><img src="rd_files/figure-html/gamma_mle_id_3-1.png" width="624" /></p>
 </div>
 <div id="gamma_mom" class="section level2">
@@ -282,9 +282,9 @@ param Estimated parameters (2) and standard error returned as a list($estimate, 
 <h4>
 Examples
 </h4>
-<pre class="r"><code>library(FlomKart)
+<pre class="r"><code>library(FlomKartShinyApp)
 estimate = gamma_mom(test_data)
-plot_density(test_data, param = estimate, distr = &quot;gamma&quot;)</code></pre>
+FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 2)</code></pre>
 <p><img src="rd_files/figure-html/gamma_mom_id_4-1.png" width="624" /></p>
 </div>
 <div id="get_posterior_gev" class="section level2">
@@ -454,9 +454,9 @@ param Estimated parameters and standard error returned as a list($estimate, $se)
 <h4>
 Examples
 </h4>
-<pre class="r"><code>library(FlomKart)
+<pre class="r"><code>library(FlomKartShinyApp)
 estimate = gev_bayes(test_data)
-plot_density(test_data, param = estimate, distr = &quot;gev&quot;)</code></pre>
+FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 3)</code></pre>
 <p><img src="rd_files/figure-html/gev_bayes_id_9-1.png" width="624" /></p>
 </div>
 <div id="gev_lmom" class="section level2">
@@ -494,9 +494,9 @@ param Estimated parameters and standard error returned as a list($estimate, $se)
 <h4>
 Examples
 </h4>
-<pre class="r"><code>library(FlomKart)
+<pre class="r"><code>library(FlomKartShinyApp)
 estimate = gev_Lmom(test_data)
-plot_density(test_data, param = estimate, distr = &quot;gev&quot;)</code></pre>
+FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 3)</code></pre>
 <p><img src="rd_files/figure-html/gev_Lmom_id_10-1.png" width="624" /></p>
 <h4>
 See also
@@ -538,9 +538,9 @@ param Estimated parameters and standard error returned as a list($estimate, $se)
 <h4>
 Examples
 </h4>
-<pre class="r"><code>library(FlomKart)
+<pre class="r"><code>library(FlomKartShinyApp)
 estimate = gev_mle(test_data)
-plot_density(test_data, param = estimate, distr = &quot;gev&quot;)</code></pre>
+FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 3)</code></pre>
 <p><img src="rd_files/figure-html/gev_mle_id_11-1.png" width="624" /></p>
 <h4>
 See also
@@ -582,9 +582,9 @@ param Estimated parameters and standard error returned as a list($estimate, $se)
 <h4>
 Examples
 </h4>
-<pre class="r"><code>library(FlomKart)
+<pre class="r"><code>library(FlomKartShinyApp)
 estimate = gev_mom(test_data)
-plot_density(test_data, param = estimate, distr = &quot;gev&quot;)</code></pre>
+FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 3)</code></pre>
 <p><img src="rd_files/figure-html/gev_mom_id_12-1.png" width="624" /></p>
 <h4>
 See also
@@ -626,9 +626,9 @@ param Estimated parameters and standard error returned as a list($estimate, $se)
 <h4>
 Examples
 </h4>
-<pre class="r"><code>library(FlomKart)
+<pre class="r"><code>library(FlomKartShinyApp)
 estimate = gl_bayes(test_data)
-plot_density(test_data, param = estimate, distr = &quot;gl&quot;)</code></pre>
+FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 4)</code></pre>
 <pre><code>## Warning in log(1 - k * (x - xi)/alfa): NaNs produced</code></pre>
 <p><img src="rd_files/figure-html/gl_bayes_id_13-1.png" width="624" /></p>
 </div>
@@ -667,9 +667,9 @@ param Estimated parameters and standard error returned as a list($estimate, $se)
 <h4>
 Examples
 </h4>
-<pre class="r"><code>library(FlomKart)
+<pre class="r"><code>library(FlomKartShinyApp)
 estimate = gl_Lmom(test_data)
-plot_density(test_data, param = estimate, distr = &quot;gl&quot;)</code></pre>
+FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 4)</code></pre>
 <pre><code>## Warning in log(1 - k * (x - xi)/alfa): NaNs produced</code></pre>
 <p><img src="rd_files/figure-html/gl_Lmom_id_14-1.png" width="624" /></p>
 </div>
@@ -685,7 +685,7 @@ Function to fit the GL distribution with the maximum likelihood method. This fun
 <h4>
 Usage
 </h4>
-<pre class="r"><code><div>gl_mle(xdat, ydat&nbsp;=&nbsp;NULL, mul&nbsp;=&nbsp;NULL, sigl&nbsp;=&nbsp;NULL, shl&nbsp;=&nbsp;NULL, mulink&nbsp;=&nbsp;identity, siglink&nbsp;=&nbsp;identity, shlink&nbsp;=&nbsp;identity, muinit&nbsp;=&nbsp;NULL, siginit&nbsp;=&nbsp;NULL, shinit&nbsp;=&nbsp;NULL, show&nbsp;=&nbsp;TRUE, method&nbsp;=&nbsp;"Nelder-Mead", maxit&nbsp;=&nbsp;10000, ...)</div></code></pre>
+<pre class="r"><code><div>gl_mle(xdat, ydat&nbsp;=&nbsp;NULL, mul&nbsp;=&nbsp;NULL, sigl&nbsp;=&nbsp;NULL, shl&nbsp;=&nbsp;NULL, mulink&nbsp;=&nbsp;identity, siglink&nbsp;=&nbsp;identity, shlink&nbsp;=&nbsp;identity, muinit&nbsp;=&nbsp;NULL, siginit&nbsp;=&nbsp;NULL, shinit&nbsp;=&nbsp;NULL, show&nbsp;=&nbsp;FALSE, method&nbsp;=&nbsp;"Nelder-Mead", maxit&nbsp;=&nbsp;10000, ...)</div></code></pre>
 <h4>
 Arguments
 </h4>
@@ -708,9 +708,9 @@ param Estimated parameters and standard error returned as a list($estimate, $se)
 <h4>
 Examples
 </h4>
-<pre class="r"><code>library(FlomKart)
+<pre class="r"><code>library(FlomKartShinyApp)
 estimate = gl_mle(test_data)
-plot_density(test_data, param = estimate, distr = &quot;gl&quot;)</code></pre>
+FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 4)</code></pre>
 <pre><code>## Warning in log(1 - k * (x - xi)/alfa): NaNs produced</code></pre>
 <p><img src="rd_files/figure-html/gl_mle_id_15-1.png" width="624" /></p>
 </div>
@@ -749,9 +749,9 @@ param Estimated parameters and standard error returned as a list($estimate, $se)
 <h4>
 Examples
 </h4>
-<pre class="r"><code>library(FlomKart)
+<pre class="r"><code>library(FlomKartShinyApp)
 estimate = gl_mom(test_data)
-plot_density(test_data, param = estimate, distr = &quot;gl&quot;)</code></pre>
+FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 4)</code></pre>
 <p><img src="rd_files/figure-html/gl_mom_id_16-1.png" width="624" /></p>
 </div>
 <div id="gumbel_bayes" class="section level2">
@@ -789,9 +789,9 @@ param Estimated parameters and standard error returned as a list($estimate, $se)
 <h4>
 Examples
 </h4>
-<pre class="r"><code>library(FlomKart)
+<pre class="r"><code>library(FlomKartShinyApp)
 estimate = gumbel_bayes(test_data)
-plot_density(test_data, param = estimate, distr = &quot;gumbel&quot;)</code></pre>
+FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 1)</code></pre>
 <p><img src="rd_files/figure-html/gumbel_bayes_id_17-1.png" width="624" /></p>
 </div>
 <div id="gumbel_lmom" class="section level2">
@@ -829,9 +829,9 @@ param Estimated parameters (2) and standard error returned as a list($estimate, 
 <h4>
 Examples
 </h4>
-<pre class="r"><code>library(FlomKart)
+<pre class="r"><code>library(FlomKartShinyApp)
 estimate = gumbel_Lmom(test_data)
-plot_density(test_data, param = estimate, distr = &quot;gumbel&quot;)</code></pre>
+FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 1)</code></pre>
 <p><img src="rd_files/figure-html/gumbel_Lmom_id_18-1.png" width="624" /></p>
 </div>
 <div id="gumbel_mle" class="section level2">
@@ -869,9 +869,9 @@ param Estimated parameters (2) and standard error returned as a list($estimate, 
 <h4>
 Examples
 </h4>
-<pre class="r"><code>library(FlomKart)
+<pre class="r"><code>library(FlomKartShinyApp)
 estimate = gumbel_mle(test_data)
-plot_density(test_data, param = estimate, distr = &quot;gumbel&quot;)</code></pre>
+FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 1)</code></pre>
 <p><img src="rd_files/figure-html/gumbel_mle_id_19-1.png" width="624" /></p>
 </div>
 <div id="gumbel_mom" class="section level2">
@@ -909,9 +909,9 @@ param Estimated parameters (2) and standard error returned as a list($estimate, 
 <h4>
 Examples
 </h4>
-<pre class="r"><code>library(FlomKart)
+<pre class="r"><code>library(FlomKartShinyApp)
 estimate = gumbel_mom(test_data)
-plot_density(test_data, param = estimate, distr = &quot;gumbel&quot;)</code></pre>
+FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 1)</code></pre>
 <p><img src="rd_files/figure-html/gumbel_mom_id_20-1.png" width="624" /></p>
 </div>
 <div id="pearson_bayes" class="section level2">
@@ -949,9 +949,9 @@ param Estimated parameters and standard error returned as a list($estimate, $se)
 <h4>
 Examples
 </h4>
-<pre class="r"><code>library(FlomKart)
+<pre class="r"><code>library(FlomKartShinyApp)
 estimate = pearson_bayes(test_data)
-plot_density(test_data, param = estimate, distr = &quot;pearson&quot;)</code></pre>
+FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 5)</code></pre>
 <p><img src="rd_files/figure-html/pearson_bayes_id_21-1.png" width="624" /></p>
 </div>
 <div id="pearson_lmom" class="section level2">
@@ -989,9 +989,9 @@ param Estimated parameters and standard error returned as a list($estimate, $se)
 <h4>
 Examples
 </h4>
-<pre class="r"><code>library(FlomKart)
+<pre class="r"><code>library(FlomKartShinyApp)
 estimate = pearson_Lmom(test_data)
-plot_density(test_data, param = estimate, distr = &quot;pearson&quot;)</code></pre>
+FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 5)</code></pre>
 <p><img src="rd_files/figure-html/pearson_Lmom_id_22-1.png" width="624" /></p>
 </div>
 <div id="pearson_mle" class="section level2">
@@ -1029,9 +1029,9 @@ param Estimated parameters and standard error returned as a list($estimate, $se)
 <h4>
 Examples
 </h4>
-<pre class="r"><code>library(FlomKart)
+<pre class="r"><code>library(FlomKartShinyApp)
 estimate = pearson_mle(test_data)
-plot_density(test_data, param = estimate, distr = &quot;pearson&quot;)</code></pre>
+FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 5)</code></pre>
 <p><img src="rd_files/figure-html/pearson_mle_id_23-1.png" width="624" /></p>
 </div>
 <div id="pearson_mom" class="section level2">
@@ -1069,9 +1069,9 @@ param Estimated parameters and standard error returned as a list($estimate, $se)
 <h4>
 Examples
 </h4>
-<pre class="r"><code>library(FlomKart)
+<pre class="r"><code>library(FlomKartShinyApp)
 estimate = pearson_mom(test_data)
-plot_density(test_data, param = estimate, distr = &quot;pearson&quot;)</code></pre>
+FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 5)</code></pre>
 <p><img src="rd_files/figure-html/pearson_mom_id_24-1.png" width="624" /></p>
 </div>
 </div>

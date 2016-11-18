@@ -2,7 +2,7 @@
 # Problem: the functions gamma_Lmom and gamma_mom do not return the standard error
 # So the 95% confidence interval was replaced by +-20% accuracy
 
-param <- c(7.6, 0.3)  # Approximate parameters taken from the fit of the Narsjo "2.11" station data
+param <- c(7.6, 1.3)  # Approximate parameters taken from the fit of the Narsjo "2.11" station data
 CI <- 2  # +-2 times the Std_error to get 95% confidence interval
 
 random_distrib <- rgamma(1000, shape=param[1], rate=param[2])

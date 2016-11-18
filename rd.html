@@ -141,7 +141,7 @@ testthat, packagedocs
 Fitting the gamma distribution with Bayesian inference
 </h3>
 <p class="rd-p">
-Function to fit the gamma distribution with bayes method This is a dummy function because this method has not been implemented yet
+Function to fit the gamma distribution with BayesianMCMC method
 </p>
 <h4>
 Usage
@@ -166,6 +166,14 @@ Value
 param Estimated parameters and standard error returned as a list($estimate, $se)
 </dl>
 </p>
+<h4>
+Examples
+</h4>
+<pre class="r"><code>library(FlomKartShinyApp)
+estimate = gamma_bayes(test_data)
+FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 5)</code></pre>
+<pre><code>## Warning in max(na.omit(y)): no non-missing arguments to max; returning -Inf</code></pre>
+<p><img src="rd_files/figure-html/gamma_bayes_id_1-1.png" width="624" /></p>
 </div>
 <div id="gamma_lmom" class="section level2">
 <h2>gamma_Lmom</h2>

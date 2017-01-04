@@ -17,5 +17,5 @@ navpills: |
   <li><a href='https://github.com/NVE/fitdistrib'>Github <i class='fa fa-github'></i></a></li>
 ---
 
-```{r auto-gen-child, child="auto-generated-rd2.Rmd"}
+```{r auto-gen-child, child="auto-generated-rd.Rmd"}
 ```

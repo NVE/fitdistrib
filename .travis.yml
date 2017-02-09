@@ -3,9 +3,11 @@ cache: packages
 
 r_packages:
   - covr
+  - roxygen2
 
 r_github_packages:
   - NVE/FlomKart_ShinyApp
+  - hafen/packagedocs
 
 env:
   global:
@@ -13,10 +15,14 @@ env:
     - GITHUB_PAT
 
 before_script:
+  # install the pkg so it can be used as a vig builder (only necessary for packagedocs)
+  - Rscript -e "devtools::install()"
+  - Rscript -e "devtools::document()"
+  - Rscript -e "packagedocs::build_vignettes()"
   - chmod +x ./_deploy.sh
 
 script:
-  - ./_deploy.sh  
-  
+  - ./_deploy.sh
+
 after_success:
   - Rscript -e 'library(covr); codecov()'

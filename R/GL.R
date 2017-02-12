@@ -95,7 +95,7 @@ gl_mle <- function (xdat, ydat = NULL, mul = NULL, sigl = NULL, shl = NULL,
       mu <- mulink(mumat %*% (a[1:npmu]))
       sc <- siglink(sigmat %*% (a[seq(npmu + 1, length = npsc)]))
       xi <- shlink(shmat %*% (a[seq(npmu + npsc + 1, length = npsh)]))
-  
+
       y <- (xdat - mu) / sc
 	  y2 <- -xi^(-1) * log(1 - xi*y)
       y[xi<= -0.0000001 | xi >= 0.0000001] <- y2[xi<= -0.0000001 | xi >= 0.0000001]
@@ -135,11 +135,14 @@ gl_mle <- function (xdat, ydat = NULL, mul = NULL, sigl = NULL, shl = NULL,
 
 
       # z$cov <- solve(x$hessian)  # initially this way
-       z$cov <- tryCatch(solve(x$hessian), finally = "Warning: could not solve Hessian")  # Protection FLO
+      fail_safe <- failwith(NULL, solve)
+      z$cov <- fail_safe(x$hessian)
+       # z$cov <- tryCatch(solve(x$hessian), finally = "Warning: could not solve Hessian")  # Protection FLO
       # z$cov <- try(solve(x$hessian))  # TO FIX!!!!!!!!!!!!!!!!
       # z$se <- sqrt(diag(z$cov))  # initially this way
+      if (is.null(z$cov) == FALSE) {
        z$se <- try(sqrt(diag(z$cov)))  # TO FIX!!!!!!!!!!!!!!!!
-
+      }
 
       z$vals <- cbind(mu, sc, xi)
       if (show) {

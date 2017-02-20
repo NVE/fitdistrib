@@ -128,7 +128,7 @@ pearson_mom <- function(dat) {
 #' @examples library(FlomKartShinyApp)
 #' estimate = pearson_bayes(test_data)
 #' FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 5)
-pearson_bayes <- function(dat) {
+pearson_bayes <- function(dat,rperiods=NA) {
 # Fit PEARSON distribution with the Bayesian method
 
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))
@@ -164,6 +164,10 @@ pearson_bayes <- function(dat) {
       param$se[2] <- sd(as.vector(bayes$parameters[, 2, 1:3]))
       param$se[3] <- sd(as.vector(bayes$parameters[, 3, 1:3]))
 
+      if(!is.na(rperiods))
+        param$rp<-get_posterior_PEARSON(rperiods, as.vector(bayes$parameters[ , 1, 1:3]),
+                                   as.vector(bayes$parameters[ , 2, 1:3]),
+                                   as.vector(bayes$parameters[ , 3, 1:3]))
       invisible(param)
     }
   } else {

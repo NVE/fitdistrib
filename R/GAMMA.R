@@ -115,7 +115,7 @@ gamma_bayes <- function(dat,rperiods=NA) {
   # Fit Gamma distribution with the Bayesian method
 
   param <- list(estimate = c(NA, NA), se = c(NA, NA))
-
+  if(!is.na(rperiods[1])) param <- list(estimate = c(NA, NA), rp = rep(NA, length(rperiods)))
   if (length(dat) >= 1) {
     # Prior for Bayes
     myprior <- function (x) {
@@ -148,7 +148,7 @@ gamma_bayes <- function(dat,rperiods=NA) {
       param$se[1] <- sd(as.vector(bayes$parameters[, 3, 1:3]))
       param$se[2] <- sd(1/as.vector(bayes$parameters[, 2, 1:3]))
 #      param$se[3] <- sd(as.vector(bayes$parameters[, 3, 1:3]))
-      if(!is.na(rperiods))
+      if(!is.na(rperiods[1]))
         param$rp<-get_posterior_gamma(rperiods, as.vector(bayes$parameters[ , 1, 1:3]),
                                         as.vector(bayes$parameters[ , 2, 1:3]),
                                         as.vector(bayes$parameters[ , 3, 1:3]))
@@ -173,7 +173,7 @@ gamma_bayes <- function(dat,rperiods=NA) {
 #' @examples
 get_posterior_gamma <- function(mmrp,mupars,spars,kpars) {
   # Function for calculating the posterior predictive distribution
-
+  
   qqsample1 <- sapply(seq(length(mupars)), function(st) {
     mean_temp <- mupars[st]
     st_temp <- spars[st]

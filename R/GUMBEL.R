@@ -94,7 +94,8 @@ gumbel_mom <- function(dat) {
 gumbel_bayes <- function(dat,rperiods=NA) {
 
   param <- list(estimate = c(NA, NA), se = c(NA, NA))
-
+  if(!is.na(rperiods[1])) param <- list(estimate = c(NA, NA), rp = rep(NA, length(rperiods)))
+  
   if (length(dat) >= 1) {
 
     # Should we do gumbel with a prior? I tried, it didn't work
@@ -117,7 +118,7 @@ gumbel_bayes <- function(dat,rperiods=NA) {
 
       param$se[1] <- sd(as.vector(bayes$parameters[, 1, 1:3]))
       param$se[2] <- sd(as.vector(bayes$parameters[, 2, 1:3]))
-      if(!is.na(rperiods))
+      if(!is.na(rperiods[1]))
         param$rp<-get_posterior_gumbel(rperiods, as.vector(bayes$parameters[ , 1, 1:3]),
                                    as.vector(bayes$parameters[ , 2, 1:3]))
 

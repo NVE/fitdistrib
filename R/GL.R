@@ -261,7 +261,8 @@ gl_mom <- function(dat) {
 gl_bayes <- function(dat,rperiods=NA) {
 # Fit GL distribution with the Bayesian method
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))
-
+  if(!is.na(rperiods[1])) param <- list(estimate = c(NA, NA), rp = rep(NA, length(rperiods)))
+  
   if (length(dat) >= 1) {
     # Prior for Bayes
     myprior <- function (x) {
@@ -291,7 +292,7 @@ gl_bayes <- function(dat,rperiods=NA) {
       param$se[1] <- sd(as.vector(bayes$parameters[, 1, 1:3]))
       param$se[2] <- sd(as.vector(bayes$parameters[, 2, 1:3]))
       param$se[3] <- sd(as.vector(bayes$parameters[, 3, 1:3]))
-      if(!is.na(rperiods))
+      if(!is.na(rperiods[1]))
         param$rp<-get_posterior_gl(rperiods, as.vector(bayes$parameters[ , 1, 1:3]),
                                     as.vector(bayes$parameters[ , 2, 1:3]),
                                     as.vector(bayes$parameters[ , 3, 1:3]))

@@ -20,7 +20,7 @@ Afterwards, run these commands:
 
 > library(devtools)
 
-> install_github("fbaffie/fitdistrib")
+> install_github("NVE/fitdistrib")
 
 # Example
 

@@ -3,7 +3,7 @@
 
 `Warning: This package is still under development and is not fully mature`
 
-Draft documentation website on [gh-pages](https://nve.github.io/fitdistrib/)
+Documentation website on [gh-pages](https://nve.github.io/fitdistrib/)
 
 # Package: fitdistrib
 

@@ -1,12 +1,17 @@
-#' Title
-#'
-#' @param dat
-#' @param threshold
-#'
-#' @return
+#' Fitting exponential distribution with L-moments
+#' @param dat 
+#' @param threshold 
+#' 
+#' @importFrom nsRFA par.genpar  
+#' @importFrom nsRFA Lmoments
+#' 
+#' @return param Estimated parameters and standard error returned as a list($estimate, $se).
+#' 
 #' @export
 #'
-#' @examples
+#' @examples estimate = gp_Lmom(test_data, threshold)
+#' threshold was added as to the function because the function sometimes set the location parameter higher than threshold causing NA values in parameter estimation
+
 gp_Lmom <- function(dat, threshold = NA) {
 
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))

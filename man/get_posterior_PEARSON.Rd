@@ -15,4 +15,3 @@ param Estimated parameters and standard error returned as a list($estimate, $se)
 \description{
 Function to calculate the posterior predictive distribution after calling pearson_bayes
 }
-

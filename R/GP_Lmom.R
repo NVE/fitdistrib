@@ -1,15 +1,24 @@
+#' Title
+#'
+#' @param dat
+#' @param threshold
+#'
+#' @return
+#' @export
+#'
+#' @examples
 gp_Lmom <- function(dat, threshold = NA) {
-  
+
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))
   if (length(dat) >= 1) {
     if (is.na(threshold)){
-      
-      
+
+
       dat.Lmom <- Lmoments(dat)
-      
+
       fail_safe <- failwith(NULL, par.genpar)
       fitted.param <- fail_safe(dat.Lmom[1], dat.Lmom[2], dat.Lmom[4])
-      
+
       if (is.null(fitted.param) == TRUE) {
         print("Warning: the function par.genpar failed in gp_Lmom")
         invisible(param)
@@ -30,7 +39,7 @@ gp_Lmom <- function(dat, threshold = NA) {
       invisible(param)
     }
   }
-  
+
   else {
     print(paste("Warning: this station has less than ", 1," years of data. Use another method!",
                 collapse = "", sep = ""))

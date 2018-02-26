@@ -1,5 +1,14 @@
+#' Title
+#'
+#' @param dat
+#' @param threshold
+#'
+#' @return
+#' @export
+#'
+#' @examples
 exp_Lmom <- function(dat, threshold = NA){
-  
+
   param <- list(estimate = c(NA, NA), se = c(NA, NA))
   if(length(dat) >= 1){
     if(is.na(threshold)){

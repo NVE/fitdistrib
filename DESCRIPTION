@@ -22,7 +22,7 @@ Description: This package was developed for the FlomKart project.
   All functions are named distr_method (i.e. gl_bayes)
 License: MIT
 LazyData: TRUE
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
 Imports:
   evd,
   ismev,
@@ -32,6 +32,4 @@ Imports:
   fitdistrplus,
   plyr
 Suggests:
-  testthat,
-    packagedocs
-VignetteBuilder: packagedocs
+  testthat

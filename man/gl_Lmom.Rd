@@ -20,4 +20,3 @@ library(FlomKartShinyApp)
 estimate = gl_Lmom(test_data)
 FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 4)
 }
-

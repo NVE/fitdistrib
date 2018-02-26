@@ -21,4 +21,3 @@ library(FlomKartShinyApp)
 estimate = pearson_bayes(test_data)
 FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 5)
 }
-

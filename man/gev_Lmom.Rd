@@ -24,4 +24,3 @@ FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 3)
 \seealso{
 \link{gev_mle}, \link{gev_mom}
 }
-

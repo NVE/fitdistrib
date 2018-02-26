@@ -9,7 +9,7 @@
 #' 
 #' @export
 #'
-#' @examples estimate = gev_Lmom(test_data, threshold)
+#' @examples estimate = gp_Lmom(test_data, threshold)
 #' threshold was added as to the function because the function sometimes set the location parameter higher than threshold causing NA values in parameter estimation
 
 gp_Lmom <- function(dat, threshold = NA) {

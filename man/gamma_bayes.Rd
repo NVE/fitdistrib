@@ -13,10 +13,6 @@ gamma_bayes(dat)
 param Estimated parameters and standard error returned as a list($estimate, $se)
 }
 \description{
-Function to fit the gamma distribution with BayesianMCMC method
-}
-\examples{
-library(FlomKartShinyApp)
-estimate = gamma_bayes(test_data)
-FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 5)
+Function to fit the gamma distribution with bayes method
+This is a dummy function because this method has not been implemented yet
 }

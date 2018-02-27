@@ -115,7 +115,7 @@ gl_mle <- function (xdat, ydat = NULL, mul = NULL, sigl = NULL, shl = NULL,
 
     if (is.null(x) == TRUE) {
       print("Warning: The function optim failed in gl_mle")
-      invisible(param)
+      invisible(z)
     } else {
       ## End hack FKB
 
@@ -135,14 +135,11 @@ gl_mle <- function (xdat, ydat = NULL, mul = NULL, sigl = NULL, shl = NULL,
 
 
       # z$cov <- solve(x$hessian)  # initially this way
-      fail_safe <- failwith(NULL, solve)
-      z$cov <- fail_safe(x$hessian)
-       # z$cov <- tryCatch(solve(x$hessian), finally = "Warning: could not solve Hessian")  # Protection FLO
+#       z$cov <- tryCatch(solve(x$hessian), finally = "Warning: could not solve Hessian")  # Protection FLO
       # z$cov <- try(solve(x$hessian))  # TO FIX!!!!!!!!!!!!!!!!
       # z$se <- sqrt(diag(z$cov))  # initially this way
-      if (is.null(z$cov) == FALSE) {
-       z$se <- try(sqrt(diag(z$cov)))  # TO FIX!!!!!!!!!!!!!!!!
-      }
+#       z$se <- try(sqrt(diag(z$cov)))  # TO FIX!!!!!!!!!!!!!!!!
+
 
       z$vals <- cbind(mu, sc, xi)
       if (show) {
@@ -159,7 +156,7 @@ gl_mle <- function (xdat, ydat = NULL, mul = NULL, sigl = NULL, shl = NULL,
   else {
     print(paste("Warning: this station has less than ",1," years of data. Use another method!",
                 collapse = "",sep = ""))
-    invisible(param)
+    invisible(z)
   }
 }
 
@@ -261,16 +258,17 @@ gl_mom <- function(dat) {
 #' @examples library(FlomKartShinyApp)
 #' estimate = gl_bayes(test_data)
 #' FlomKartShinyApp::plot4server(test_data, param = estimate$estimate, distr = 4)
-gl_bayes <- function(dat) {
+gl_bayes <- function(dat,rperiods=NA) {
 # Fit GL distribution with the Bayesian method
   param <- list(estimate = c(NA, NA, NA), se = c(NA, NA, NA))
-
+  if(!is.na(rperiods[1])) param <- list(estimate = c(NA, NA), rp = rep(NA, length(rperiods)))
+  
   if (length(dat) >= 1) {
     # Prior for Bayes
     myprior <- function (x) {
       # x = vector of parameter values: c(location, scale, shape)
       # I assume the shape parameter only has a prior with mean zero and standard deviation 0.2
-      dnorm(x[3], 0, 0.2)
+      dnorm(x[3], -0.15, 0.175)
     }
 
     fail_safe <- failwith(NULL, BayesianMCMC)
@@ -294,7 +292,10 @@ gl_bayes <- function(dat) {
       param$se[1] <- sd(as.vector(bayes$parameters[, 1, 1:3]))
       param$se[2] <- sd(as.vector(bayes$parameters[, 2, 1:3]))
       param$se[3] <- sd(as.vector(bayes$parameters[, 3, 1:3]))
-
+      if(!is.na(rperiods[1]))
+        param$rp<-get_posterior_gl(rperiods, as.vector(bayes$parameters[ , 1, 1:3]),
+                                    as.vector(bayes$parameters[ , 2, 1:3]),
+                                    as.vector(bayes$parameters[ , 3, 1:3]))
       invisible(param)
     }
   } else {

@@ -67,7 +67,7 @@ gev_Lmom <- function(dat) {
     } else {
     # fitted.param <- as.numeric(par.GEV(dat.mom[1], dat.mom[2], dat.mom[4]))
     # Creating the returning list
-    param$estimate <- c(fitted.param$xi, fitted.param$alfa, - fitted.param$k)
+    param$estimate <- c(fitted.param$xi, fitted.param$alfa, fitted.param$k)
     # Standard error is not yet implemented
     invisible(param)
     }
